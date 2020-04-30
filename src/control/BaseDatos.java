@@ -21,7 +21,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 public class BaseDatos {
-   
 
     Connection conexion;
     Statement st;
@@ -45,16 +44,16 @@ public class BaseDatos {
      * conexión, falso en caso contrario
      */
     public boolean crearConexion() {
-        boolean t=false;
+        boolean t = false;
         try {
             //Class.forName("com.mysql.jdbc.Driver");                                      //user  //pass
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/readerpro", "root", "root");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/readerpro", "root", "1234");
             st = conexion.createStatement();
-            t=true;
+            t = true;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            t= false;
-        } 
+            t = false;
+        }
         return t;
     }
 
@@ -65,8 +64,8 @@ public class BaseDatos {
      * @param sql Cadena que contiene la instrucción SQL a ejecutar
      * @return estado regresa el estado de la ejecución, true(éxito) o
      * false(error)
-     *     
-*/
+     *
+     */
     public boolean ejecutarSQL(String sql) {
         try {
             Statement sentencia = conexion.createStatement();
@@ -85,8 +84,8 @@ public class BaseDatos {
      *
      * @param sql Cadena que contiene la instrucción SQL a ejecutar
      * @return resultado regresa los registros generados por la consulta
-     *     
-*/
+     *
+     */
     public String ejecutarSQLSelect(String sql) {
         ResultSet rs;
         int id;
@@ -167,7 +166,6 @@ public class BaseDatos {
 //
 //        return modificar;
 //    }
-
     public void storeProcedious() {
         CallableStatement statemen;
         try {
@@ -348,5 +346,4 @@ public class BaseDatos {
 //        }
 //        return lista;
 //    }
-
 }
