@@ -5,13 +5,17 @@
  */
 package modelo;
 
+import control.BaseDatos;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author felipe
  */
 public class Pais_autor {
- 
-        private int id_paisA;
+
+    private int id_paisA;
     private String nombrePaisA;
 
     public Pais_autor() {
@@ -25,7 +29,7 @@ public class Pais_autor {
     public Pais_autor(String nombrePaisA) {
         this.nombrePaisA = nombrePaisA;
     }
-    
+
     /**
      * Get the value of nombrePaisA
      *
@@ -43,7 +47,6 @@ public class Pais_autor {
     public void setNombrePaisA(String nombrePaisA) {
         this.nombrePaisA = nombrePaisA;
     }
-
 
     /**
      * Get the value of id_paisA
@@ -68,6 +71,24 @@ public class Pais_autor {
         return "Pais_autor{" + "id_paisA=" + id_paisA + ", nombrePaisA=" + nombrePaisA + '}';
     }
 
-    
-    
+    public boolean insertarPais_autor(String sql) {
+
+        boolean t = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t = false;
+            }
+        }
+
+        return t;
+
+    }
+
 }

@@ -5,6 +5,9 @@
  */
 package vista;
 
+import control.ControlPais_autor;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author felipe
@@ -64,8 +67,8 @@ public class VistaPais_autorI extends javax.swing.JFrame {
                         .addGap(263, 263, 263)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(jButton1)))
+                        .addGap(316, 316, 316)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -77,16 +80,26 @@ public class VistaPais_autorI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(130, 130, 130))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String nombrePais_autor = jTextField1.getText();
+
+        ControlPais_autor objcpa = new ControlPais_autor();
+
+        boolean t = objcpa.insertarPaises_autor(nombrePais_autor);
+
+        if (t == true) {
+            JOptionPane.showMessageDialog(this, "Se inserto el pais del autor");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se inserto el pais del autor");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
