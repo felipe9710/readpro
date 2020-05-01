@@ -34,8 +34,8 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         jTextTelefonoE = new javax.swing.JTextField();
         jTextCorreoE = new javax.swing.JTextField();
         jTextNombreE = new javax.swing.JTextField();
-        Calendario = new com.toedter.calendar.JDateChooser();
         jButtonInsertEditorial = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,8 +69,6 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
             }
         });
 
-        Calendario.setDateFormatString("yyyy-MM-dd");
-
         jButtonInsertEditorial.setText("INSERTAR");
         jButtonInsertEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +94,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                     .addComponent(jTextCorreoE, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                     .addComponent(jTextDireccionE, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                     .addComponent(jTextTelefonoE, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Calendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(116, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -111,7 +109,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addComponent(jTextNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,8 +124,8 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTextCorreoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Calendario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
                         .addComponent(jButtonInsertEditorial))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -161,7 +159,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     String direccion_E = jTextDireccionE.getText();
     String correo_E = jTextCorreoE.getText();
     
-    Date Fecha_Creacion_Editorial2 = Calendario.getDate();
+    Date Fecha_Creacion_Editorial2 = jDateChooser1.getDate();
     
     long d=Fecha_Creacion_Editorial2.getTime();
     
@@ -215,8 +213,8 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser Calendario;
     private javax.swing.JButton jButtonInsertEditorial;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
