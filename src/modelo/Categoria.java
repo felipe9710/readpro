@@ -11,43 +11,33 @@ import java.sql.Statement;
 
 /**
  *
- * @author FrankDCastillo
+ * @author usuario
  */
-public class Pais_narrador {
+public class Categoria {
     
-    private int id_PaisN;
-    private String nombrePaisN;
+    private String categoria;
 
-    public Pais_narrador() {
+    public Categoria() {
     }
 
-    public Pais_narrador(int id_PaisN, String nombrePaisN) {
-        this.id_PaisN = id_PaisN;
-        this.nombrePaisN = nombrePaisN;
+    public Categoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public int getId_PaisN() {
-        return id_PaisN;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setId_PaisN(int id_PaisN) {
-        this.id_PaisN = id_PaisN;
-    }
-
-    public String getNombrePaisN() {
-        return nombrePaisN;
-    }
-
-    public void setNombrePaisN(String nombrePaisN) {
-        this.nombrePaisN = nombrePaisN;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     @Override
     public String toString() {
-        return "Pais_narrador{" + "id_PaisN=" + id_PaisN + ", nombrePaisN=" + nombrePaisN + '}';
+        return "Categoria{" + "categoria=" + categoria + '}';
     }
     
-    public boolean insertarPais_narrador(String sql){
+        public boolean insertarCategoria(String sql){
         
         boolean t = false;
         BaseDatos objCon = new BaseDatos();
@@ -67,3 +57,4 @@ public class Pais_narrador {
     }
     
 }
+
