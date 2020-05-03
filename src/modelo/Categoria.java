@@ -6,8 +6,10 @@
 package modelo;
 
 import control.BaseDatos;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 /**
  *
@@ -54,6 +56,34 @@ public class Categoria {
             }
         }
         return t;
+    }
+        
+        
+            public LinkedList<Categoria> buscarCategoria(String sql) {
+        ResultSet rs = null;
+        LinkedList<Categoria> lc = new LinkedList<>();
+        BaseDatos objcone = new BaseDatos();
+        String categoria;
+
+
+        
+        if (objcone.crearConexion()) {
+            try {
+                Statement sentencia = objcone.getConexion().createStatement();
+                rs = sentencia.executeQuery(sql);
+                while (rs.next()) {
+                   
+                    categoria = rs.getNString("categoria");
+                   
+                 
+                    lc.add(new Categoria(categoria));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+
+            }
+        }
+        return lc;
     }
     
 }

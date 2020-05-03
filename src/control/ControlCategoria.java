@@ -5,6 +5,7 @@
  */
 package control;
 
+import java.util.LinkedList;
 import modelo.Categoria;
 
 /**
@@ -22,7 +23,14 @@ public class ControlCategoria {
         
         t = objpc.insertarCategoria(sql);
         return t;
+     
+    }
         
+    public LinkedList<Categoria> consultarCategoria() {
+        String sql="Select * from Categorias;";
+        Categoria objc=new Categoria();
+        LinkedList<Categoria> listc=objc.buscarCategoria(sql);
         
+        return listc;
     }
 }
