@@ -5,6 +5,7 @@
  */
 package control;
 
+import java.util.LinkedList;
 import modelo.Pais_Usuario;
 
 /**
@@ -22,6 +23,10 @@ public class Control_Paises_Usuario {
         t =  objpU.insertarPaises_Usuario(sql);
         
         return t;
+    }
+
+    public LinkedList<Pais_Usuario> consultarPaises() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
