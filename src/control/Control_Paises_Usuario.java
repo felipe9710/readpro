@@ -13,20 +13,25 @@ import modelo.Pais_Usuario;
  * @author Home
  */
 public class Control_Paises_Usuario {
-    
-    public boolean insertarPaises_Usuario(String Pais_Usuario){
+
+    public boolean insertarPaises_Usuario(String Pais_Usuario) {
         boolean t = false;
         Pais_Usuario objpU = new Pais_Usuario();
-        
-        String sql = "insert into paises_usuarios(nombrePaisU) value ('"+Pais_Usuario+"')";
-        
-        t =  objpU.insertarPaises_Usuario(sql);
-        
+
+        String sql = "insert into paises_usuarios(nombrePaisU) value ('" + Pais_Usuario + "')";
+
+        t = objpU.insertarPaises_Usuario(sql);
+
         return t;
     }
 
     public LinkedList<Pais_Usuario> consultarPaises() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        LinkedList<Pais_Usuario> lpu = new LinkedList<>();
+        String sql = "select * from paises_usuarios";
+        Pais_Usuario objpu= new Pais_Usuario();
+        lpu = objpu.consultarPaises(sql);
     
+        return lpu;
+    }
+
 }

@@ -19,13 +19,37 @@ import java.util.logging.Logger;
  */
 public class Pais_Usuario {
     
-    private String nombrePaisU;
+        private int id_PaisU;
+        private String nombrePaisU;
 
     public Pais_Usuario() {
     }
 
+    public Pais_Usuario(int id_PaisU, String nombrePaisU) {
+        this.id_PaisU = id_PaisU;
+        this.nombrePaisU = nombrePaisU;
+    }
+
     public Pais_Usuario(String nombrePaisU) {
         this.nombrePaisU = nombrePaisU;
+    }
+
+    /**
+     * Get the value of id_PaisU
+     *
+     * @return the value of id_PaisU
+     */
+    public int getId_PaisU() {
+        return id_PaisU;
+    }
+
+    /**
+     * Set the value of id_PaisU
+     *
+     * @param id_PaisU new value of id_PaisU
+     */
+    public void setId_PaisU(int id_PaisU) {
+        this.id_PaisU = id_PaisU;
     }
 
     public String getNombrePaisU() {
@@ -59,25 +83,26 @@ public class Pais_Usuario {
         return t;
     }
         public LinkedList<Pais_Usuario> consultarPaises(String sql) {
-        LinkedList<Pais_Usuario> lc = new LinkedList<>();
+        LinkedList<Pais_Usuario> lp = new LinkedList<>();
         BaseDatos objb = new BaseDatos();
         
-        String nombrePaisU = "";
+        int id_PaisU1;
+        String nombrePaisU1 = "";
 
         ResultSet rs = null;
         if (objb.crearConexion()) {
             try {
                 rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
-                    nombrePaisU = rs.getString("nombrePaisU");
-
-                    lc.add(new Pais_Usuario(nombrePaisU));
+                    id_PaisU1 = rs.getInt("id_PaisU");
+                    nombrePaisU1 = rs.getString("nombrePaisU");
+                    lp.add(new Pais_Usuario(id_PaisU1,nombrePaisU1));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Pais_Usuario.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return lc;
+        return lp;
 
     }
     
