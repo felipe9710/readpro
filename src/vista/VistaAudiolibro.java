@@ -50,10 +50,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         numPag = new javax.swing.JTextField();
         duracion = new javax.swing.JTextField();
         idioma = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAgregarAudiolibro = new javax.swing.JButton();
+        btnEliminarAudiolibro = new javax.swing.JButton();
+        btnModificarAudiolibro = new javax.swing.JButton();
+        btnLimpiarAudiolibro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,13 +102,13 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
         jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
 
-        jButton1.setText("Agregar");
+        btnAgregarAudiolibro.setText("Agregar");
 
-        jButton2.setText("Eliminar");
+        btnEliminarAudiolibro.setText("Eliminar");
 
-        jButton3.setText("Modificar");
+        btnModificarAudiolibro.setText("Modificar");
 
-        jButton4.setText("Limpiar");
+        btnLimpiarAudiolibro.setText("Limpiar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,13 +150,13 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jButton1)
+                        .addComponent(btnAgregarAudiolibro)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnEliminarAudiolibro)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(btnModificarAudiolibro)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
+                        .addComponent(btnLimpiarAudiolibro)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -210,10 +210,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 .addComponent(Correo1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnAgregarAudiolibro)
+                    .addComponent(btnEliminarAudiolibro)
+                    .addComponent(btnModificarAudiolibro)
+                    .addComponent(btnLimpiarAudiolibro))
                 .addGap(20, 20, 20))
         );
 
@@ -257,13 +257,13 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Correo1;
+    private javax.swing.JButton btnAgregarAudiolibro;
+    private javax.swing.JButton btnEliminarAudiolibro;
+    private javax.swing.JButton btnLimpiarAudiolibro;
+    private javax.swing.JButton btnModificarAudiolibro;
     private javax.swing.JTextField duracion;
     private javax.swing.JTextField fechaCreacion;
     private javax.swing.JTextField idioma;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JComboBox<String> jComboBoxEditorial;
     private javax.swing.JComboBox<String> jComboBoxNarrador;
