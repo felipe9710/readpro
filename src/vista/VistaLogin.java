@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package vista;
 
+import control.ControlLogin;
 import javax.swing.JOptionPane;
+import modelo.Login;
 import vista.VistaUsuario;
 
 /**
  *
  * @author felipe
  */
-public class login extends javax.swing.JFrame {
+public class VistaLogin extends javax.swing.JFrame {
 
     /**
      * Creates new form login
      */
-    public login() {
+    public VistaLogin() {
         initComponents();
     }
 
@@ -101,23 +103,31 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTentrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTentrarMouseClicked
+
+        String usuario = txtusuario.getText();
+        String contraseña = txtcontraseña.getText();
+
+        Login objLogin = new Login(usuario, contraseña);
+        ControlLogin objcl = new ControlLogin();
+        boolean t1 = objcl.buscarUsuarioRegistrado(objLogin);
+        VistaUsuario vu = new VistaUsuario();
         
-        String usuario="admin";
-        String contraseña = "1234";
+        //boolean buscarUsuario = objLogin.buscarUsuarioRegistrado(true);
         
-        String pass = new String (txtcontraseña.getText());
-        
-        if(txtusuario.getText().equals(usuario) && pass.equals(contraseña)){
+        if (usuario.equals("root") && contraseña.equals("root")){
             
-            VistaUsuario vu = new VistaUsuario();
+            JOptionPane.showMessageDialog(this, "Inicio sesion como administrador");
+            this.dispose();
             vu.setVisible(true);
-            dispose();
-        }else{
+        }else if (t1 == true){
             
-            JOptionPane.showMessageDialog(this, "Usuario y/o contraeña incorrecta");
+            JOptionPane.showMessageDialog(this, "bienvenido(a)"+ usuario);
+            this.dispose();
+            vu.setVisible(true);
+        }else {
+            JOptionPane.showMessageDialog(this, "usuario no registrado");    
         }
-        
-        
+
     }//GEN-LAST:event_BTentrarMouseClicked
 
     /**
@@ -137,20 +147,21 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new VistaLogin().setVisible(true);
             }
         });
     }
