@@ -112,8 +112,6 @@ public class VistaLogin extends javax.swing.JFrame {
         boolean t1 = objcl.buscarUsuarioRegistrado(objLogin);
         VistaUsuario vu = new VistaUsuario();
         
-        //boolean buscarUsuario = objLogin.buscarUsuarioRegistrado(true);
-        
         if (usuario.equals("root") && contraseña.equals("root")){
             
             JOptionPane.showMessageDialog(this, "Inicio sesion como administrador");
@@ -121,11 +119,14 @@ public class VistaLogin extends javax.swing.JFrame {
             vu.setVisible(true);
         }else if (t1 == true){
             
-            JOptionPane.showMessageDialog(this, "bienvenido(a)"+ usuario);
+            JOptionPane.showMessageDialog(this, "bienvenido(a) \n"+ usuario);
             this.dispose();
             vu.setVisible(true);
-        }else {
-            JOptionPane.showMessageDialog(this, "usuario no registrado");    
+        } else if(objLogin.getUsuario().equals("") || objLogin.getContraseña().equals("")) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese sus credenciales completas");
+        
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario y/o contraseña incorrecta");
         }
 
     }//GEN-LAST:event_BTentrarMouseClicked
