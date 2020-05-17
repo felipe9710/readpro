@@ -5,6 +5,7 @@
  */
 package control;
 
+import java.util.LinkedList;
 import modelo.Pais_Narrador;
 
 /**
@@ -24,6 +25,14 @@ public class ControlPais_Narrador {
         return t;
         
         
+    }
+        
+        public LinkedList<Pais_Narrador> consultarpaisnarrador() {
+        String sql="Select * from paises_narradores;";
+        Pais_Narrador objc=new Pais_Narrador();
+        LinkedList<Pais_Narrador> listpn=objc.buscar_pais_narrador(sql);
+        
+        return listpn;
     }
     
 }
