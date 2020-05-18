@@ -31,7 +31,6 @@ public class Pais_Narrador {
     public Pais_Narrador(String nombrePaisN) {
         this.nombrePaisN = nombrePaisN;
     }
-    
 
     public int getId_PaisN() {
         return id_PaisN;
@@ -99,7 +98,7 @@ public class Pais_Narrador {
     }
 
     public boolean modificarPais_Narrador(String sql) {
-        
+
         boolean t1 = false;
         BaseDatos objCon = new BaseDatos();
 
@@ -115,7 +114,27 @@ public class Pais_Narrador {
             }
         }
         return t1;
-        
+
+    }
+
+    public boolean eliminarPais_Narrador(String sql) {
+
+        boolean t2 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t2 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t2 = false;
+            }
+        }
+        return t2;
+
     }
 
 }

@@ -32,13 +32,23 @@ public class ControlPais_Narrador {
         return listpn;
     }
 
-    public boolean modificarPais_narrador(String selected,String nombrePaisNa) {
-        
+    public boolean modificarPais_narrador(String selected, String nombrePaisNa) {
+
         boolean t1 = false;
         Pais_Narrador objmpa = new Pais_Narrador();
-        String sql = "update paises_narradores set nombrePais = '" + nombrePaisNa + "' where id_PaisN ="+ selected;
+        String sql = "update paises_narradores set nombrePais = '" + nombrePaisNa + "' where id_PaisN =" + selected;
         t1 = objmpa.modificarPais_Narrador(sql);
         return t1;
+    }
+
+    public boolean eliminarPais_narrador(String select) {
+
+        boolean t2 = false;
+        Pais_Narrador objepa = new Pais_Narrador();
+        String sql = "delete from paises_narradores where id_PaisN =" + select;
+        t2 = objepa.eliminarPais_Narrador(sql);
+        return t2;
+
     }
 
 }

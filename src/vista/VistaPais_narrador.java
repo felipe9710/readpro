@@ -195,34 +195,32 @@ public class VistaPais_narrador extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        
+
         ControlPais_Narrador objpn = new ControlPais_Narrador();
         int ncol;
         Object[] fila;
 
-        
-            listaPais_narradores = objpn.consultarpaisnarrador();
+        listaPais_narradores = objpn.consultarpaisnarrador();
 
-            DefaultTableModel modelo = new DefaultTableModel();
-            this.jTable1.setModel(modelo);
+        DefaultTableModel modelo = new DefaultTableModel();
+        this.jTable1.setModel(modelo);
 
-            modelo.addColumn("id Pais Narrador");
-            modelo.addColumn("Pais");
-            ncol = modelo.getColumnCount();
+        modelo.addColumn("id Pais Narrador");
+        modelo.addColumn("Pais");
+        ncol = modelo.getColumnCount();
 
-            //Object[] fila = new Object[ncol];
-            for (int i = 0; i < listaPais_narradores.size(); i++) {
-                fila = new Object[ncol];
-                fila[0] = listaPais_narradores.get(i).getId_PaisN();
-                fila[1] = listaPais_narradores.get(i).getNombrePaisN();
-                modelo.addRow(fila);
-            
+        //Object[] fila = new Object[ncol];
+        for (int i = 0; i < listaPais_narradores.size(); i++) {
+            fila = new Object[ncol];
+            fila[0] = listaPais_narradores.get(i).getId_PaisN();
+            fila[1] = listaPais_narradores.get(i).getNombrePaisN();
+            modelo.addRow(fila);
 
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+
         int seleccion = jTable1.rowAtPoint(evt.getPoint());
         txtNombrePaisNarrador.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
         idpn.setText(String.valueOf(jTable1.getValueAt(seleccion, 0)));
@@ -233,7 +231,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         String nombrePaisNa = txtNombrePaisNarrador.getText();
         ControlPais_Narrador objmpn = new ControlPais_Narrador();
         String selected = idpn.getText();
-        boolean t1 = objmpn.modificarPais_narrador(selected,nombrePaisNa);
+        boolean t1 = objmpn.modificarPais_narrador(selected, nombrePaisNa);
 
         if (t1 == true) {
             JOptionPane.showMessageDialog(this, "Se modifico el pais del narrador");
@@ -244,7 +242,17 @@ public class VistaPais_narrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+
+        ControlPais_Narrador objepn = new ControlPais_Narrador();
+        String select = idpn.getText();
+        boolean t1 = objepn.eliminarPais_narrador(select);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se elimino el pais del narrador");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se elimino el pais del narrador");
+        }
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
