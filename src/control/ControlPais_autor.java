@@ -5,6 +5,8 @@
  */
 package control;
 
+import java.util.LinkedList;
+import modelo.Pais_Narrador;
 import modelo.Pais_autor;
 
 /**
@@ -24,6 +26,14 @@ public class ControlPais_autor {
         return t;
         
         
+    }
+    
+    public LinkedList<Pais_autor> consultarpaisautor() {
+        String sql="Select * from paises_autores;";
+        Pais_autor objc=new Pais_autor();
+        LinkedList<Pais_autor> listpa=objc.buscar_pais_autor(sql);
+        
+        return listpa;
     }
     
 }

@@ -25,6 +25,8 @@ public class VistaPais_narrador extends javax.swing.JFrame {
     public VistaPais_narrador() {
         initComponents();
         
+        setLocationRelativeTo(null);
+        
         listaPais_narradores = new LinkedList<>();
     }
 
@@ -70,6 +72,11 @@ public class VistaPais_narrador extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         btnInsertar.setText("Insertar");
@@ -187,6 +194,12 @@ public class VistaPais_narrador extends javax.swing.JFrame {
 
         }    
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int seleccion = jTable1.rowAtPoint(evt.getPoint());
+        txtNombrePaisNarrador.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
