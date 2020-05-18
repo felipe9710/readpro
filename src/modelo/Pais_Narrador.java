@@ -73,7 +73,7 @@ public class Pais_Narrador {
         LinkedList<Pais_Narrador> lpn = new LinkedList<>();
         BaseDatos objCon = new BaseDatos();
         String idpn;
-        String nombrepn;
+        String nombrepn = "";
 
         if (objCon.crearConexion()) {
             try {
@@ -81,7 +81,7 @@ public class Pais_Narrador {
                 rs = sentencia.executeQuery(sql);
                 while (rs.next()) {
                     idpn = rs.getString("id_PaisN");
-                    nombrepn = rs.getString("nombrePaisN");
+                    nombrepn = rs.getString("nombrePais");
 
                     lpn.add(new Pais_Narrador(Integer.parseInt(idpn), nombrepn));
                 }

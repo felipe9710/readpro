@@ -77,5 +77,30 @@ public class Autor {
         return t;
     }
 
+    public LinkedList<Autor> consultarAutores(String sql) {
+        
+        LinkedList<Autor> la = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+
+        int id_autor1=0;
+        String nombre_autor1 = "";
+        ResultSet rs = null;
+        
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    id_autor1 = rs.getInt("id_autor");
+                    nombre_autor1 = rs.getString("nombre_autor1");
+                    la.add(new Autor(id_autor1, nombre_autor1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Autor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return la;
+        
+    }
+
 
 }

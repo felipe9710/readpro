@@ -20,17 +20,14 @@ import modelo.Usuario;
  */
 public class Vista_Autores_Libros extends javax.swing.JFrame {
 
-  LinkedList<Autores_Libros> listaAUL;
-  LinkedList<Audiolibro> listaAL;
+    LinkedList<Autor> listaA;
 
     /**
      * Creates new form VistaUsuario
      */
-
     public Vista_Autores_Libros() {
         initComponents();
-        listaAUL=new LinkedList<>();
-        listaAL=new LinkedList<>();
+        listaA = new LinkedList<>();
     }
 
     /**
@@ -46,12 +43,17 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Autores-Libros");
@@ -63,12 +65,6 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("ID_Autor");
-
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("MOSTRAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,8 +100,8 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(142, 142, 142)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(109, 109, 109)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -129,9 +125,9 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,40 +139,20 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
-
-        ControlAutores_Libros objpu = new ControlAutores_Libros();
-        
-        listaAUL = objpu.consultarAutores_Libros();
-               
-        for (int i = 0; i < listaAUL.size(); i++) {
-
-            Autores_Libros objetoAutor = listaAUL.get(i);
-            jComboBox1.addItem(objetoAutor.getNombre_Autor());
-
-        }
-
-    }   
-    
-    
-    
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-     int id_AutorLibro=0;
-     String Nombre_Autor=jComboBox1.getSelectedItem().toString();;
-     int id_LibroF=0;
 
-        
-        for (int j = 0; j < listaAUL.size(); j++) {
-            Autores_Libros au = listaAUL.get(j);
-            if (Nombre_Autor.equals(au.getNombre_Autor()));
-            {
-                id_AutorLibro = au.getId_AutorLibro();
+        int id_AutorLibro = 0;
+        String Nombre_Autor = jComboBox1.getSelectedItem().toString();;
+        int id_LibroF = 0;
+
+        for (int j = 0; j < listaA.size(); j++) {
+            Autor au = listaA.get(j);
+            if (Nombre_Autor.equals(au.getNombre_autor1())) {
+                id_AutorLibro = au.getId_autor();
             }
         }
-      
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -187,9 +163,19 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        ControlAutor obja = new ControlAutor();
+
+        listaA = obja.consultarAutores();
+
+        for (int i = 0; i < listaA.size(); i++) {
+            Autor objetoAutor = listaA.get(i);
+            jComboBox1.addItem(objetoAutor.getNombre_autor1());
+
+        }
+
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

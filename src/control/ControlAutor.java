@@ -8,6 +8,7 @@ package control;
 import java.sql.Date;
 import java.util.LinkedList;
 import modelo.Autor;
+import modelo.Autores_Libros;
 
 /**
  *
@@ -27,13 +28,16 @@ public class ControlAutor {
         
         
     }
-    public LinkedList<Autor> consultarAutor() {
-        LinkedList<Autor> lpu = new LinkedList<>();
-        String sql = "select * from autores";
-        Autor objpu= new Autor();
-        lpu = objpu.consultarAutor(sql);
-    
-        return lpu;
+
+    public LinkedList<Autor> consultarAutores() {
+        
+        LinkedList<Autor> listaA = new LinkedList<>();
+        Autor obja= new Autor();
+        String sql = "select * from Autores";
+        listaA = obja.consultarAutores(sql);
+        
+        return listaA;
+        
     }
 
 }
