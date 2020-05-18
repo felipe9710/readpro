@@ -6,6 +6,7 @@
 package control;
 
 import java.sql.Date;
+import java.util.LinkedList;
 import modelo.Autor;
 
 /**
@@ -26,5 +27,13 @@ public class ControlAutor {
         
         
     }
+    public LinkedList<Autor> consultarAutor() {
+        LinkedList<Autor> lpu = new LinkedList<>();
+        String sql = "select * from autores";
+        Autor objpu= new Autor();
+        lpu = objpu.consultarAutor(sql);
     
+        return lpu;
+    }
+
 }
