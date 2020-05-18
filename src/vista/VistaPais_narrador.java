@@ -160,9 +160,9 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         boolean t = objcpn.insertarPaises_narrador(nombrePaisN);
 
         if (t == true) {
-            JOptionPane.showMessageDialog(this, "Se inserto el pais del autor");
+            JOptionPane.showMessageDialog(this, "Se inserto el pais del narrador");
         } else {
-            JOptionPane.showMessageDialog(this, "No se inserto el pais del autor");
+            JOptionPane.showMessageDialog(this, "No se inserto el pais del narrador");
         }
         
     }//GEN-LAST:event_btnInsertarActionPerformed

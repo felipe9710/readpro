@@ -19,7 +19,7 @@ public class ControlPais_Narrador {
         boolean t = false;
         Pais_Narrador objpa = new Pais_Narrador();
         
-        String sql = "insert into paises_narrador(nombrepaisN) value ('"+nombrePais_narrador+"')";
+        String sql = "insert into paises_narradores(nombrepaisN) value ('"+nombrePais_narrador+"')";
         
         t = objpa.insertarPaises_Narrador(sql);
         return t;
