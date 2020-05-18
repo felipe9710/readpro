@@ -180,8 +180,8 @@ public class VistaPais_narrador extends javax.swing.JFrame {
             DefaultTableModel modelo = new DefaultTableModel();
             this.jTable1.setModel(modelo);
 
-            modelo.addColumn("id Pais Narrador");
-            modelo.addColumn("Nombre Pais N");
+            modelo.addColumn("id_PaisN");
+            modelo.addColumn("nombrePais");
             ncol = modelo.getColumnCount();
 
             //Object[] fila = new Object[ncol];

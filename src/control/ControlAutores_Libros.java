@@ -23,8 +23,8 @@ public class ControlAutores_Libros {
         return t;
     }
 
-    public LinkedList<Autores_Libros> consultarAutores_Libros() {
-        LinkedList<Autores_Libros> lpu = new LinkedList<>();
+    public LinkedList<Autor> consultarAutores_Libros() {
+        LinkedList<Autor> lpu = new LinkedList<>();
         String sql = "select * from autores";
         Autores_Libros objpu= new Autores_Libros();
         lpu = objpu.consultarAutor(sql);

@@ -89,8 +89,8 @@ public class Autores_Libros {
         }
         return t;
     }
-        public LinkedList<Autores_Libros> consultarAutor(String sql) {
-        LinkedList<Autores_Libros> lp = new LinkedList<>();
+        public LinkedList<Autor> consultarAutor(String sql) {
+        LinkedList<Autor> lp = new LinkedList<>();
         BaseDatos objb = new BaseDatos();
 
         int id_autorL=0;
@@ -103,7 +103,7 @@ public class Autores_Libros {
                 while (rs.next()) {
                     id_autorL = rs.getInt("id_autor");
                     nombre_autor1L = rs.getString("nombre_autor1");
-                    lp.add(new Autores_Libros(nombre_autor1L,id_autorL));
+                    lp.add(new Autor(id_autorL,nombre_autor1L));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Autor.class.getName()).log(Level.SEVERE, null, ex);
