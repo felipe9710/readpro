@@ -6,7 +6,9 @@
 package control;
 
 import java.sql.Date;
+import java.util.LinkedList;
 import modelo.Editorial;//EL METODO ES COMO SE LLAMA EL MODELO
+import modelo.Pais_Narrador;
 
 
 /**
@@ -26,6 +28,14 @@ public class Control_Editorial {
         return t;
         
         
+    }
+    
+        public LinkedList<Editorial> consultarEditorial() {
+        String sql="Select * from editoriales;";
+        Editorial objc=new Editorial();
+        LinkedList<Editorial> listpn=objc.buscar_Editorial(sql);
+        
+        return listpn;
     }
     
 }

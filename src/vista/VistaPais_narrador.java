@@ -227,6 +227,11 @@ public class VistaPais_narrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+<<<<<<< HEAD
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+=======
 
         String nombrePaisNa = txtNombrePaisNarrador.getText();
         ControlPais_Narrador objmpn = new ControlPais_Narrador();
@@ -255,6 +260,7 @@ public class VistaPais_narrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+>>>>>>> c48b490055276430c82ddf7ce966c189968e75fa
     /**
      * @param args the command line arguments
      */
