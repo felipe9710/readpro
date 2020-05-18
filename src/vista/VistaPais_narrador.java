@@ -89,6 +89,11 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         btnEliminar.setText("Eliminar");
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +205,10 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         int seleccion = jTable1.rowAtPoint(evt.getPoint());
         txtNombrePaisNarrador.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
