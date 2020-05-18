@@ -5,17 +5,29 @@
  */
 package vista;
 
+import control.ControlPais_Narrador;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Pais_Narrador;
+
 /**
  *
  * @author usuario
  */
 public class VistaPais_narrador extends javax.swing.JFrame {
+    
+    LinkedList<Pais_Narrador> listaPais_narradores;
 
     /**
      * Creates new form VistaPaise_narrador
      */
     public VistaPais_narrador() {
         initComponents();
+        
+        setLocationRelativeTo(null);
+        
+        listaPais_narradores = new LinkedList<>();
     }
 
     /**
@@ -27,75 +39,167 @@ public class VistaPais_narrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel8 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        nombrePaisNarrador = new javax.swing.JTextField();
-        btnLimpiarPaisNarrador = new javax.swing.JButton();
-        btnAgregarPaisNarrador = new javax.swing.JButton();
-        btnEliminarPaisNarrador = new javax.swing.JButton();
-        btnModificarPaisNarrador = new javax.swing.JButton();
+        txtNombrePaisNarrador = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnInsertar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Nombre Pais");
+        jLabel3.setText("PAIS NARRADOR");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Insertar Pais Narradores");
+        jLabel1.setText("Nombre pais narrador:");
 
-        btnLimpiarPaisNarrador.setText("Limpiar");
+        txtNombrePaisNarrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombrePaisNarradorActionPerformed(evt);
+            }
+        });
 
-        btnAgregarPaisNarrador.setText("Agregar");
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
 
-        btnEliminarPaisNarrador.setText("Eliminar");
+        btnInsertar.setText("Insertar");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
 
-        btnModificarPaisNarrador.setText("Modificar");
+        btnEliminar.setText("Eliminar");
+
+        btnModificar.setText("Modificar");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAgregarPaisNarrador)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarPaisNarrador)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificarPaisNarrador)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiarPaisNarrador))
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(56, 56, 56)
-                        .addComponent(nombrePaisNarrador)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNombrePaisNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnInsertar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnModificar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(85, 85, 85)
+                .addComponent(jLabel3)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(nombrePaisNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNombrePaisNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarPaisNarrador)
-                    .addComponent(btnEliminarPaisNarrador)
-                    .addComponent(btnModificarPaisNarrador)
-                    .addComponent(btnLimpiarPaisNarrador))
-                .addGap(33, 33, 33))
+                    .addComponent(btnInsertar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnBuscar))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombrePaisNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePaisNarradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombrePaisNarradorActionPerformed
+
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        // TODO add your handling code here:
+        String nombrePaisN = txtNombrePaisNarrador.getText();
+
+        ControlPais_Narrador objcpn = new ControlPais_Narrador();
+
+        boolean t = objcpn.insertarPaises_narrador(nombrePaisN);
+
+        if (t == true) {
+            JOptionPane.showMessageDialog(this, "Se inserto el pais del autor");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se inserto el pais del autor");
+        }
+        
+    }//GEN-LAST:event_btnInsertarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        String buscar = txtNombrePaisNarrador.getText();
+        ControlPais_Narrador  objpn = new ControlPais_Narrador();
+        int ncol;
+        Object [] fila;
+        
+        if (buscar.equals("")) {
+            listaPais_narradores = objpn.consultarpaisnarrador();
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            this.jTable1.setModel(modelo);
+
+            modelo.addColumn("id Pais Narrador");
+            modelo.addColumn("Nombre Pais N");
+            ncol = modelo.getColumnCount();
+
+            //Object[] fila = new Object[ncol];
+            for (int i = 0; i < listaPais_narradores.size(); i++) {
+                fila = new Object[ncol];
+                fila[0] = listaPais_narradores.get(i).getId_PaisN();
+                fila[1] = listaPais_narradores.get(i).getNombrePaisN();
+                modelo.addRow(fila);
+            }
+
+        }    
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int seleccion = jTable1.rowAtPoint(evt.getPoint());
+        txtNombrePaisNarrador.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -134,12 +238,14 @@ public class VistaPais_narrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarPaisNarrador;
-    private javax.swing.JButton btnEliminarPaisNarrador;
-    private javax.swing.JButton btnLimpiarPaisNarrador;
-    private javax.swing.JButton btnModificarPaisNarrador;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnInsertar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField nombrePaisNarrador;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtNombrePaisNarrador;
     // End of variables declaration//GEN-END:variables
 }
