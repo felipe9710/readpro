@@ -80,7 +80,7 @@ public class VistaUsuario extends javax.swing.JFrame {
         jLabel1.setText("Pais del usuario");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("INSERTAR USUARIO");
+        jLabel2.setText("CREAR USUARIO");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Nombre :");
