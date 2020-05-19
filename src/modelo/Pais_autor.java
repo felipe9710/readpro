@@ -72,7 +72,7 @@ public class Pais_autor {
     public String toString() {
         return "Pais_autor{" + "id_paisA=" + id_paisA + ", nombrePaisA=" + nombrePaisA + '}';
     }
-
+   
     public boolean insertarPais_autor(String sql) {
 
         boolean t = false;
@@ -92,7 +92,7 @@ public class Pais_autor {
         return t;
 
     }
-    
+
     public LinkedList<Pais_autor> buscar_pais_autor(String sql) {
         ResultSet rs = null;
         LinkedList<Pais_autor> lpa = new LinkedList<>();
@@ -116,6 +116,46 @@ public class Pais_autor {
             }
         }
         return lpa;
+    }
+
+    public boolean eliminarPaisautor(String sql) {
+
+        boolean t2 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t2 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t2 = false;
+            }
+        }
+        return t2;
+
+    }
+
+    public boolean modificarPais_Autor(String sql) {
+
+        boolean t1 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t1 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t1 = false;
+            }
+        }
+        return t1;
+
     }
 
 }

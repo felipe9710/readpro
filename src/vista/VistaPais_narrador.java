@@ -176,7 +176,8 @@ public class VistaPais_narrador extends javax.swing.JFrame {
     private void txtNombrePaisNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePaisNarradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombrePaisNarradorActionPerformed
-
+    //El metodo btnInsertarActionPerformed es el metodo del boton insertar que 
+    //se encarga de insertar cada uno de los paises del narrador en la base de datos   
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
         // TODO add your handling code here:
         String nombrePaisN = txtNombrePaisNarrador.getText();
@@ -192,7 +193,8 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnInsertarActionPerformed
-
+    //El metodo btnBuscarActionPerformed es el metodo del boton buscar que
+    //se encarga de buscar el pais del narrador en la base de datos
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
 
@@ -218,14 +220,16 @@ public class VistaPais_narrador extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
-
+    //El metodo jTable1MouseClicked es un evento del mouse que se genera para que cuando el usuario
+    //de un click en alguna de las filas del jTable1, automaticamente tome los valores y los asigne al txtNombrePaisNarrador
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
 
         int seleccion = jTable1.rowAtPoint(evt.getPoint());
         txtNombrePaisNarrador.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
         idpn.setText(String.valueOf(jTable1.getValueAt(seleccion, 0)));
     }//GEN-LAST:event_jTable1MouseClicked
-
+    //El metodo btnModificarActionPerformed es el metodo del boton modificar, que se encarga
+    //de tomar lo valores del txtNombrePaisNarrador y los cambia
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 
         String nombrePaisNa = txtNombrePaisNarrador.getText();
@@ -240,7 +244,8 @@ public class VistaPais_narrador extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnModificarActionPerformed
-
+    //El metodo btnEliminarActionPerformed es el metodo del botón eliminar, que se encarga
+    //de tomar los valores del txtNombrePaisNarrador para posteriormente eliminarlos
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
         ControlPais_Narrador objepn = new ControlPais_Narrador();

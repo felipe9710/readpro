@@ -5,12 +5,10 @@
  */
 package vista;
 
-import control.ControlPais_Narrador;
 import control.ControlPais_autor;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Pais_Narrador;
 import modelo.Pais_autor;
 
 /**
@@ -18,7 +16,7 @@ import modelo.Pais_autor;
  * @author felipe
  */
 public class VistaPais_autorI extends javax.swing.JFrame {
-    
+
     LinkedList<Pais_autor> listaPais_autores;
 
     /**
@@ -26,9 +24,9 @@ public class VistaPais_autorI extends javax.swing.JFrame {
      */
     public VistaPais_autorI() {
         initComponents();
-        
+
         setLocationRelativeTo(null);
-        
+
         listaPais_autores = new LinkedList<>();
     }
 
@@ -50,6 +48,8 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         btneliminar = new javax.swing.JButton();
         btnmodificar = new javax.swing.JButton();
         btnbuscar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jlbIdPaisAutor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,8 +83,18 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
 
         btnmodificar.setText("Modificar");
+        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodificarActionPerformed(evt);
+            }
+        });
 
         btnbuscar.setText("Buscar");
         btnbuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -93,22 +103,18 @@ public class VistaPais_autorI extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Id pais autor:");
+
+        jlbIdPaisAutor.setText("...");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(142, 142, 142))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(55, 55, 55)
-                        .addComponent(jTextField1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
@@ -116,15 +122,32 @@ public class VistaPais_autorI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnmodificar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnbuscar)))
+                        .addComponent(btnbuscar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlbIdPaisAutor))
+                            .addComponent(jTextField1))))
                 .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(142, 142, 142))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jlbIdPaisAutor))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -141,7 +164,8 @@ public class VistaPais_autorI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //El metodo jButton1ActionPerformed es el metodo del botón insertar que 
+    //se encarga de insertar cada uno de los paises del autor en la base de datos 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombrePais_autor = jTextField1.getText();
 
@@ -155,22 +179,23 @@ public class VistaPais_autorI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se inserto el pais del autor");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //El metodo  btnbuscarActionPerformed es el metodo del botón buscar que
+    //se encarga de buscar el pais del autor en la base de datos
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
         String buscar = jTextField1.getText();
-        ControlPais_autor  objpn = new ControlPais_autor();
+        ControlPais_autor objpn = new ControlPais_autor();
         int ncol;
-        Object [] fila;
-        
+        Object[] fila;
+
         if (buscar.equals("")) {
             listaPais_autores = objpn.consultarpaisautor();
 
             DefaultTableModel modelo = new DefaultTableModel();
             this.jTable1.setModel(modelo);
 
-            modelo.addColumn("id Pais Narrador");
-            modelo.addColumn("Nombre Pais N");
+            modelo.addColumn("id Pais Autor");
+            modelo.addColumn("Nombre Pais A");
             ncol = modelo.getColumnCount();
 
             //Object[] fila = new Object[ncol];
@@ -182,15 +207,46 @@ public class VistaPais_autorI extends javax.swing.JFrame {
             }
 
         }
-        
-    }//GEN-LAST:event_btnbuscarActionPerformed
 
+    }//GEN-LAST:event_btnbuscarActionPerformed
+    //El metodo jTable1MouseClicked es un evento del mouse que se genera para que cuando el usuario
+    //de un click en alguna de las filas del jTable1, automaticamente tome los valores y los asigne al jTextField1
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        
         int seleccion = jTable1.rowAtPoint(evt.getPoint());
         jTextField1.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
+        jlbIdPaisAutor.setText(String.valueOf(jTable1.getValueAt(seleccion, 0)));
     }//GEN-LAST:event_jTable1MouseClicked
+    //El metodo btneliminarActionPerformed es el metodo del botón eliminar, que se encarga
+    //de tomar los valores del jTextField1 para posteriormente eliminarlos
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+        // TODO add your handling code here:
+        ControlPais_autor objepa = new ControlPais_autor();
+        String select = jlbIdPaisAutor.getText();
+        boolean t1 = objepa.eliminarPais_autor(select);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se elimino el pais del autor");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se elimino el pais del autor");
+        }
+    }//GEN-LAST:event_btneliminarActionPerformed
+    //El metodo btnModificarActionPerformed es el metodo del boton modificar, que se encarga
+    //de tomar lo valores del txtNombrePaisNarrador y los cambia
+    private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        // TODO add your handling code here:
+        String nombrePaisA = jTextField1.getText();
+        ControlPais_autor objmpa = new ControlPais_autor();
+        String selected = jlbIdPaisAutor.getText();
+        boolean t1 = objmpa.modificarPais_autor(selected, nombrePaisA);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se modifico el pais del autor");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se modifico el pais del autor");
+        }
+
+    }//GEN-LAST:event_btnmodificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,8 +290,10 @@ public class VistaPais_autorI extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jlbIdPaisAutor;
     // End of variables declaration//GEN-END:variables
 }
