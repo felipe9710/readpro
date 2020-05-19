@@ -36,11 +36,11 @@ public class ControlAutor {
     
         return lpu;
     }
- public boolean modificarAutor(String selected,String nombre_autor1, String nombre_autor2, String apellido_autor1, String apellido_autor2, Date fecha_nacimiento_Autor,String pais) {
+ public boolean modificarAutor(String selected,String nombre_autor1, String nombre_autor2, String apellido_autor1, String apellido_autor2, Date fecha_nacimiento_Autor,int idpais) {
 
         boolean t1 = false;
         Autor objmpa = new Autor();
-        String sql = "update autores set nombre_autor1 = '"+nombre_autor1+"',nombre_autor2='"+nombre_autor2+"',apellido_autor1='"+apellido_autor1+"',apellido_autor2='"+apellido_autor2+"',fecha_nacimiento_Autor='"+fecha_nacimiento_Autor+"',id_PaisAF='"+pais+"' where id_autor="+selected;
+        String sql = "update autores set nombre_autor1 = '"+nombre_autor1+"',nombre_autor2='"+nombre_autor2+"',apellido_autor1='"+apellido_autor1+"',apellido_autor2='"+apellido_autor2+"',fecha_nacimiento_Autor='"+fecha_nacimiento_Autor+"',id_PaisAF='"+idpais+"' where id_autor="+selected;
         t1 = objmpa.modificarAutor(sql);
         return t1;
     }
