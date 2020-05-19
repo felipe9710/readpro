@@ -380,7 +380,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         jTextCorreoE.setText(String.valueOf(jTable1.getValueAt(seleccion, 4)));
         
         //obtenemos la fila seleccionada
-        int fila = jTable1.getSelectedRow();
+        
         //obtenemos la fecha de dicha fila
         String fecha = jTable1.getValueAt(seleccion, 5).toString();
         //creamos el formato en el que deseamos mostrar la fecha
