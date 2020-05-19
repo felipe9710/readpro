@@ -167,7 +167,7 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         ControlAutor obja = new ControlAutor();
 
-        listaA = obja.consultarAutores();
+        //listaA = obja.consultarAutores();
 
         for (int i = 0; i < listaA.size(); i++) {
             Autor objetoAutor = listaA.get(i);
