@@ -6,21 +6,27 @@
 package vista;
 
 import control.ControlNarrador;
-
+import control.ControlPais_Narrador;
+import java.util.LinkedList;
 import javax.swing.JOptionPane;
+import modelo.Pais_Narrador;
 import modelo.Narrador;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author usuario
  */
 public class VistaNarrador extends javax.swing.JFrame {
-
+   
+    LinkedList<Pais_Narrador> listapu;
+    
     /**
      * Creates new form VistaNarrador
      */
     public VistaNarrador() {
         initComponents();
+        listapu = new LinkedList<>();
     }
 
     /**
@@ -33,6 +39,7 @@ public class VistaNarrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         apellidoNarrador2 = new javax.swing.JTextField();
         btnAgregarNarrador = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -50,8 +57,12 @@ public class VistaNarrador extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        idn = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
+
+        jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,17 +76,32 @@ public class VistaNarrador extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Primer Nombre");
 
-        btnEliminarNarrador.setText("Eliminar");
+        btnEliminarNarrador.setText("Mostrar");
+        btnEliminarNarrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarNarradorActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Segundo Nombre");
 
         btnModificarNarrador.setText("Modificar");
+        btnModificarNarrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarNarradorActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Insertar Narrador");
 
-        btnLimpiarNarrador.setText("Limpiar");
+        btnLimpiarNarrador.setText("Eliminar");
+        btnLimpiarNarrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarNarradorActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Primer Apellido");
@@ -92,6 +118,11 @@ public class VistaNarrador extends javax.swing.JFrame {
         jLabel10.setText("Pais Narrador");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
+
+        idn.setEditable(false);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setText("ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,13 +161,23 @@ public class VistaNarrador extends javax.swing.JFrame {
                         .addGap(73, 73, 73)
                         .addComponent(jLabel1)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(idn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(idn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(nombreNarrador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -160,7 +201,7 @@ public class VistaNarrador extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarNarrador)
                     .addComponent(btnEliminarNarrador)
@@ -172,6 +213,19 @@ public class VistaNarrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+
+        ControlPais_Narrador objpu = new ControlPais_Narrador();
+        listapu = objpu.consultarPaisesN();
+        for (int i = 0; i < listapu.size(); i++) {
+
+            Pais_Narrador objetoPaisN = listapu.get(i);
+            jComboBox1.addItem(objetoPaisN.getNombrePaisN());
+
+        }
+
+    }
+       
     private void btnAgregarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarNarradorActionPerformed
         ControlNarrador objcE=new ControlNarrador();
         
@@ -179,7 +233,17 @@ public class VistaNarrador extends javax.swing.JFrame {
     String nombre_Narrador2=nombreNarrador2.getText();
     String apellido_Narrador1=apellidoNarrador1.getText();
     String apellido_Narrador2=apellidoNarrador2.getText();
-    
+    String nombrePais = jComboBox1.getSelectedItem().toString();
+            int idn = 0;
+
+        for (int j = 0; j < listapu.size(); j++) {
+            Pais_Narrador pais = listapu.get(j);
+            if (nombrePais.equals(pais.getNombrePaisN())) {
+                idn = pais.getId_PaisN();
+
+            }
+        }
+        
     Date fecha_nacimiento_narrador2 = jDateChooser1.getDate();
     
     long d=fecha_nacimiento_narrador2.getTime();
@@ -194,6 +258,46 @@ public class VistaNarrador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se inserto el narrador");
         }
     }//GEN-LAST:event_btnAgregarNarradorActionPerformed
+
+    private void btnLimpiarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarNarradorActionPerformed
+                        ControlNarrador objeu = new ControlNarrador();
+        String selected = idn.getText();
+        boolean t1 = objeu.eliminarNarrador(selected);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se elimino el narrador");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se elimino el narrador");
+        }
+    }//GEN-LAST:event_btnLimpiarNarradorActionPerformed
+
+    private void btnModificarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarNarradorActionPerformed
+         String nombre_narrador1 = nombreNarrador1.getText();
+         String nombre_narrador2  = nombreNarrador2.getText();
+         String apellido_narrador1  = apellidoNarrador1.getText();
+         String apellido_narrador2  = apellidoNarrador2.getText();                
+         Date fecha_nacimiento_narrador2 = jDateChooser1.getDate();
+         //String id_PaisNF = jComboBox1.getSelectedItem().toString();
+         
+         long f=fecha_nacimiento_narrador2.getTime();
+    
+         java.sql.Date fecha_nacimiento_narrador= new java.sql.Date(f);
+         
+        ControlNarrador objmpn = new ControlNarrador();
+        String selected = idn.getText();
+        
+        boolean t1 = objmpn.modificarNarrador( selected,nombre_narrador1,nombre_narrador2,apellido_narrador1,apellido_narrador2,fecha_nacimiento_narrador);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se modifico el narrador");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se modifico el narrador");
+        }
+    }//GEN-LAST:event_btnModificarNarradorActionPerformed
+
+    private void btnEliminarNarradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarNarradorActionPerformed
+
+    }//GEN-LAST:event_btnEliminarNarradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,14 +341,17 @@ public class VistaNarrador extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarNarrador;
     private javax.swing.JButton btnLimpiarNarrador;
     private javax.swing.JButton btnModificarNarrador;
+    private javax.swing.JTextField idn;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField nombreNarrador1;
