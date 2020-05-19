@@ -297,7 +297,7 @@ public class VistaCategoria extends javax.swing.JFrame {
                 jTextField1.setText(rs.getString("categoria"));
           
             } else {
-                JOptionPane.showMessageDialog(null, "No existe una persona con la clave");
+                JOptionPane.showMessageDialog(null, "No existe una catehoria con la clave");
             }
             
         } catch(Exception e){
