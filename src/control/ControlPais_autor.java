@@ -6,7 +6,6 @@
 package control;
 
 import java.util.LinkedList;
-import modelo.Pais_Narrador;
 import modelo.Pais_autor;
 
 /**
@@ -34,6 +33,25 @@ public class ControlPais_autor {
         LinkedList<Pais_autor> listpa=objc.buscar_pais_autor(sql);
         
         return listpa;
+    }
+    
+    public boolean eliminarPais_autor(String select) {
+
+        boolean t2 = false;
+        Pais_autor objepa = new Pais_autor();
+        String sql = "delete from paises_autores where id_paisA =" + select;
+        t2 = objepa.eliminarPaisautor(sql);
+        return t2;
+
+    }
+    
+    public boolean modificarPais_autor(String selected, String nombrePaisA) {
+
+        boolean t1 = false;
+        Pais_autor objmpa = new Pais_autor();
+        String sql = "update paises_autores set nombrePais = '" + nombrePaisA + "' where id_PaisA =" + selected;
+        t1 = objmpa.modificarPais_Autor(sql);
+        return t1;
     }
     
 }
