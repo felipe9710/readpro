@@ -48,7 +48,7 @@ public class Control_Editorial {
 
         boolean t2 = false;
         Editorial objepa = new Editorial();
-        String sql = "delete from editoriles where id_editorial =" + select;
+        String sql = "delete from editoriales where id_editorial =" + select;
         t2 = objepa.eliminarEditorial(sql);
         return t2;
 
