@@ -221,9 +221,9 @@ public class VistaPais_autorI extends javax.swing.JFrame {
     //de tomar los valores del jTextField1 para posteriormente eliminarlos
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
         // TODO add your handling code here:
-        ControlPais_autor objepn = new ControlPais_autor();
+        ControlPais_autor objepa = new ControlPais_autor();
         String select = jlbIdPaisAutor.getText();
-        boolean t1 = objepn.eliminarPais_autor(select);
+        boolean t1 = objepa.eliminarPais_autor(select);
 
         if (t1 == true) {
             JOptionPane.showMessageDialog(this, "Se elimino el pais del autor");
@@ -241,9 +241,9 @@ public class VistaPais_autorI extends javax.swing.JFrame {
         boolean t1 = objmpa.modificarPais_autor(selected, nombrePaisA);
 
         if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se modifico el pais del narrador");
+            JOptionPane.showMessageDialog(this, "Se modifico el pais del autor");
         } else {
-            JOptionPane.showMessageDialog(this, "No se modifico el pais del narrador");
+            JOptionPane.showMessageDialog(this, "No se modifico el pais del autor");
         }
 
     }//GEN-LAST:event_btnmodificarActionPerformed

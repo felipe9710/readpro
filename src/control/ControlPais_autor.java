@@ -49,7 +49,7 @@ public class ControlPais_autor {
 
         boolean t1 = false;
         Pais_autor objmpa = new Pais_autor();
-        String sql = "update paises_autores set nombrePais = '" + nombrePaisA + "' where id_PaisA =" + selected;
+        String sql = "update paises_autores set nombrePaisA = '" + nombrePaisA + "' where id_paisA =" + selected;
         t1 = objmpa.modificarPais_Autor(sql);
         return t1;
     }
