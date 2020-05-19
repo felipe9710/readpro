@@ -7,6 +7,8 @@ package vista;
 
 
 import control.Control_Editorial;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JOptionPane;
 import modelo.Editorial;
@@ -32,6 +34,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     private void initComponents() {
 
         idpn = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -47,10 +50,12 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         jButtoNBorrar = new javax.swing.JButton();
         jButtonModificar = new javax.swing.JButton();
         jButtonMostrar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         idE = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         idpn.setEditable(false);
 
@@ -93,6 +98,8 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
             }
         });
 
+        jDateChooser1.setDateFormatString("yyyy/MM/d");
+
         jButtoNBorrar.setText("BORRAR");
         jButtoNBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +121,15 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
             }
         });
 
+        idE.setEditable(false);
+        idE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idEActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Id: ");
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -132,14 +148,7 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        idE.setEditable(false);
-        idE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idEActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Id: ");
+        jScrollPane4.setViewportView(jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,38 +165,43 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                             .addComponent(jLabel4)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jButtonInsertEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23)
-                                    .addComponent(jButtoNBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButtonModificar)
-                                    .addGap(22, 22, 22)
-                                    .addComponent(jButtonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(264, 264, 264)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(idE, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextTelefonoE, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextDireccionE, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextCorreoE, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                                .addGap(106, 106, 106)
+                                .addComponent(jButtonInsertEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(jButtoNBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonModificar)
+                                .addGap(22, 22, 22)
+                                .addComponent(jButtonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(264, 264, 264)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(idE, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextTelefonoE, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextDireccionE, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextCorreoE, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(287, 287, 287)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(229, 229, 229)
                     .addComponent(jLabel1)
-                    .addContainerGap(94, Short.MAX_VALUE)))
+                    .addContainerGap(490, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,9 +211,9 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                     .addComponent(idE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextNombreE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -222,14 +236,15 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
                     .addComponent(jButtonMostrar)
                     .addComponent(jButtoNBorrar)
                     .addComponent(jButtonInsertEditorial))
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(30, 30, 30)
                     .addComponent(jLabel1)
-                    .addContainerGap(496, Short.MAX_VALUE)))
+                    .addContainerGap(730, Short.MAX_VALUE)))
         );
 
         pack();
@@ -358,16 +373,38 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int seleccion = jTable1.rowAtPoint(evt.getPoint());
+        
         jTextNombreE.setText(String.valueOf(jTable1.getValueAt(seleccion, 1)));
         jTextTelefonoE.setText(String.valueOf(jTable1.getValueAt(seleccion, 2)));
         jTextDireccionE.setText(String.valueOf(jTable1.getValueAt(seleccion, 3)));
         jTextCorreoE.setText(String.valueOf(jTable1.getValueAt(seleccion, 4)));
         
-        jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(seleccion, 5)));
+        //obtenemos la fila seleccionada
+        
+        //obtenemos la fecha de dicha fila
+        String fecha = jTable1.getValueAt(seleccion, 5).toString();
+        //creamos el formato en el que deseamos mostrar la fecha
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-mm-dd");
+        //creamos una variable tipo Date y la ponemos NULL
+        Date fechaN = null;
+        try {
+            //parseamos de String a Date usando el formato
+            fechaN = formatoDelTexto.parse(fecha);
+            //seteamos o mostramos la fecha en el JDateChooser
+            jDateChooser1.setDate(fechaN);
+            
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+     
+          
+       //jDateChooser1.setDateFormatString(String.valueOf(jTable1.getModel().getValueAt(seleccion, 5)));
+         //jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(seleccion, 5)));
+        
+       // jDateChooser1.setName(String.valueOf(jTable1.getValueAt(seleccion, 5)));//---> funciona modificar
+        idE.setText(String.valueOf(jTable1.getValueAt(seleccion, 0)));
             
         
-        idE.setText(String.valueOf(jTable1.getValueAt(seleccion, 0)));
-                                       
     }//GEN-LAST:event_jTable1MouseClicked
                                     
 
@@ -422,6 +459,9 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextCorreoE;
     private javax.swing.JTextField jTextDireccionE;

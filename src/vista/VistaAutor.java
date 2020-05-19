@@ -7,6 +7,8 @@ package vista;
 
 import control.ControlAutor;
 import control.ControlPais_autor;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import modelo.Pais_autor;
@@ -334,8 +336,26 @@ public class VistaAutor extends javax.swing.JFrame {
         nombreAutor2.setText(String.valueOf(jTable1.getValueAt(selected, 2)));
         apellidoAutor1.setText(String.valueOf(jTable1.getValueAt(selected, 3)));
         apellidoAutor2.setText(String.valueOf(jTable1.getValueAt(selected, 4)));
-        jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(selected, 5)));
-        jComboBox2.setSelectedItem(jTable1.getValueAt(selected, 6));   
+        //jDateChooser1.setDateFormatString(String.valueOf(jTable1.getValueAt(selected, 5)));
+        jComboBox2.setSelectedItem(jTable1.getValueAt(selected, 6)); 
+        
+          
+        //obtenemos la fecha de dicha fila
+        String fecha = jTable1.getValueAt(selected, 5).toString();
+        //creamos el formato en el que deseamos mostrar la fecha
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-mm-dd");
+        //creamos una variable tipo Date y la ponemos NULL
+        Date fechaN = null;
+        try {
+            //parseamos de String a Date usando el formato
+            fechaN = formatoDelTexto.parse(fecha);
+            //seteamos o mostramos la fecha en el JDateChooser
+            jDateChooser1.setDate(fechaN);
+            
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        
         
         
     }//GEN-LAST:event_jTable1MouseClicked
