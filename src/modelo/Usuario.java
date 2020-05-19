@@ -9,6 +9,10 @@ import control.BaseDatos;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -303,9 +307,9 @@ public class Usuario {
                 ps.setString(7, objUsuario.getCorreo_usuario());
                 ps.setString(8, objUsuario.getContraseña_usuario());
                 ps.setString(9, objUsuario.getFecha_nacimiento());
-                ps.setString(10,objUsuario.getFecha_inscripicion());
+                ps.setString(10, objUsuario.getFecha_inscripicion());
                 ps.setInt(11, objUsuario.getId_PaisUF());
-        
+
                 ps.executeUpdate();
                 objb.getConexion().commit();
                 t = true;
@@ -316,6 +320,93 @@ public class Usuario {
         }
 
         return t;
+
+    }
+
+    public LinkedList<Usuario> consultarUsuario(String sql) {
+
+        ResultSet rs = null;
+        LinkedList<Usuario> lu = new LinkedList<>();
+        BaseDatos objCon = new BaseDatos();
+        String idu;
+        String nombre1 = "";
+        String nombre2 = "";
+        String apellido = "";
+        String apellido2 = "";
+        String genero = "";
+        String nombre_usuario = "";
+        String contraseña = "";
+        String correo = "";
+        String fecha_nac = "";
+        String fecha_insc = "";
+        String idPaisuf;
+
+        if (objCon.crearConexion()) {
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                rs = sentencia.executeQuery(sql);
+                while (rs.next()) {
+                    idu = rs.getString("id_Usuario");
+                    nombre1 = rs.getString("nombre1");
+                    nombre2 = rs.getString("nombre2");
+                    apellido = rs.getString("apellido1");
+                    apellido2 = rs.getString("apellido2");
+                    genero = rs.getString("genero");
+                    nombre_usuario = rs.getString("nombre_usuario");
+                    correo = rs.getString("correo_usuario");
+                    contraseña = rs.getString("contraseña_usuario");
+                    fecha_nac = rs.getString("fecha_nacimiento");
+                    fecha_insc = rs.getString("fecha_incripcion");
+                    idPaisuf = rs.getString("id_PaisUF");
+
+                    lu.add(new Usuario(Integer.parseInt(idu), nombre1, nombre2, apellido, apellido2, genero, nombre_usuario, correo, contraseña, fecha_nac, fecha_insc, Integer.parseInt(idPaisuf)));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+
+            }
+        }
+        return lu;
+
+    }
+
+    public boolean modificarUsuario(String sql) {
+
+        boolean t1 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t1 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t1 = false;
+            }
+        }
+        return t1;
+
+    }
+
+    public boolean eliminarUsuario(String sql) {
+
+        boolean t2 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t2 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t2 = false;
+            }
+        }
+        return t2;
 
     }
 
