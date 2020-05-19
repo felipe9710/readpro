@@ -439,7 +439,17 @@ public class VistaUsuario extends javax.swing.JFrame {
         String fecha_insc = jTextField9.getText();
         String pais = jComboBox1.getSelectedItem().toString();
         ControlUsuario objmu = new ControlUsuario();
-        boolean t1 = objmu.modificarUsuario(select, nombre1, nombre2, apellido, apellido2, genero, nombre_usuario, correo, contraseña, fecha_nac, fecha_insc, pais);
+        int idpais =0;
+
+        for (int i = 0; i < listapu.size(); i++) {
+            Pais_Usuario paisu = listapu.get(i);
+            if (pais.equals(paisu.getNombrePaisU())) {
+                idpais = paisu.getId_PaisU();
+
+            }
+        }
+        
+        boolean t1 = objmu.modificarUsuario(select, nombre1, nombre2, apellido, apellido2, genero, nombre_usuario, correo, contraseña, fecha_nac, fecha_insc, idpais);
 
         if (t1 == true) {
             JOptionPane.showMessageDialog(this, "Se modifico el usuario con exito");

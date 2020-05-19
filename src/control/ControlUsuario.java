@@ -36,11 +36,11 @@ public class ControlUsuario {
 
     }
 
-    public boolean modificarUsuario(String select, String nombre1, String nombre2, String apellido, String apellido2, String genero, String nombre_usuario, String correo, String contraseña, String fecha_nac, String fecha_insc, String pais) {
+    public boolean modificarUsuario(String select, String nombre1, String nombre2, String apellido, String apellido2, String genero, String nombre_usuario, String correo, String contraseña, String fecha_nac, String fecha_insc, int idpais) {
 
         boolean t1 = false;
         Usuario objmpa = new Usuario();
-        String sql = "update usuarios set nombre1 = '" + nombre1 + "',nombre2 = '"+nombre2+ "',apellido1 = '"+apellido+ "',apellido2 = '"+apellido2+ "',genero = '"+genero+ "',nombre_usuario = '"+nombre_usuario+ "',correo_usuario = '"+correo+ "',contraseña_usuario = '"+contraseña+"',fecha_nacimiento = '"+fecha_nac+"',fecha_incripcion = '"+fecha_insc+"'where id_usuario =" + select;
+        String sql = "update usuarios set nombre1 = '" + nombre1 + "',nombre2 = '"+nombre2+ "',apellido1 = '"+apellido+ "',apellido2 = '"+apellido2+ "',genero = '"+genero+ "',nombre_usuario = '"+nombre_usuario+ "',correo_usuario = '"+correo+ "',contraseña_usuario = '"+contraseña+"',fecha_nacimiento = '"+fecha_nac+"',fecha_incripcion = '"+fecha_insc+"',id_PaisUF = '"+ idpais +"'where id_usuario =" + select;
         t1 = objmpa.modificarUsuario(sql);
         return t1;
 
