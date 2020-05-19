@@ -33,4 +33,23 @@ public class ControlCategoria {
         
         return listc;
     }
+        public boolean modificarCategoria(String selected, String categoria) {
+
+        boolean t1 = false;
+        Categoria objmpa = new Categoria();
+        String sql = "update categorias set categoria = '" + categoria + "' where id_categoria =" + selected;
+        t1 = objmpa.modificarCategoria(sql);
+        return t1;
+    }
+        
+        public boolean eliminarCategoria(String select) {
+
+        boolean t2 = false;
+        Categoria objepa = new Categoria();
+        String sql = "delete from paises_narradores where id_PaisN =" + select;
+        t2 = objepa.eliminarCategoria(sql);
+        return t2;
+
+    }
+    
 }

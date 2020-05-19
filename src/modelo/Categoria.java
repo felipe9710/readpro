@@ -17,6 +17,7 @@ import java.util.LinkedList;
  */
 public class Categoria {
     
+    private int id_categoria;
     private String categoria;
 
     public Categoria() {
@@ -34,6 +35,20 @@ public class Categoria {
         this.categoria = categoria;
     }
 
+    public Categoria(int id_categoria, String categoria) {
+        this.id_categoria = id_categoria;
+        this.categoria = categoria;
+    }
+
+    public int getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
+    }
+
+    
     @Override
     public String toString() {
         return "Categoria{" + "categoria=" + categoria + '}';
@@ -86,5 +101,44 @@ public class Categoria {
         return lc;
     }
     
+        public boolean modificarCategoria(String sql) {
+
+        boolean t1 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t1 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t1 = false;
+            }
+        }
+        return t1;
+
+    }
+        public boolean eliminarCategoria(String sql) {
+
+        boolean t2 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t2 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t2 = false;
+            }
+        }
+        return t2;
+
+    }    
+            
 }
 
