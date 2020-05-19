@@ -6,7 +6,9 @@
 package modelo;
 
 import control.BaseDatos;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -98,8 +100,7 @@ public class Editorial {
         return "Editorial{" + "id_editorial=" + id_editorial + ", nombre_editorial=" + nombre_editorial + ", telefono_E=" + telefono_E + ", direccion_E=" + direccion_E + ", correo_E=" + correo_E + ", Fecha_Creacion_Editorial=" + Fecha_Creacion_Editorial + '}';
     }
 
-
-      
+   
     public boolean insertarEditorial(String sql) {
 
         boolean t = false;

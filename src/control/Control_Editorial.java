@@ -39,7 +39,7 @@ public class Control_Editorial {
 
         boolean t1 = false;
         Editorial objmpa = new Editorial();
-        String sql = "update editoriales set nombre_editorial = " + nombre_editorial + ",telefono_E =" + telefono_E + ",direccion_E=" + direccion_E + ",correo_E=" + correo_E + ",Fecha_Creacion_Editorial="+Fecha_Creacion_Editorial + " where id_editorial =" + selected+";";
+        String sql = "update editoriales set nombre_editorial = '"+nombre_editorial+"',telefono_E='"+telefono_E+"',direccion_E='"+direccion_E+"',correo_E='"+correo_E+"',Fecha_Creacion_Editorial='"+Fecha_Creacion_Editorial+"' where id_editorial="+selected;
         t1 = objmpa.modificarEditorial(sql);
         return t1;
     }
