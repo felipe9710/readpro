@@ -6,8 +6,12 @@
 package modelo;
 
 import control.BaseDatos;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -90,5 +94,27 @@ public class Pais_autor {
         return t;
 
     }
+    public LinkedList<Pais_autor> consultarPaisesA(String sql) {
+        LinkedList<Pais_autor> lp = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+        
+        int id_paisA1;
+        String nombrePaisA1 = "";
 
+        ResultSet rs = null;
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    id_paisA1 = rs.getInt("id_paisA");
+                    nombrePaisA1 = rs.getString("nombrePaisA");
+                    lp.add(new Pais_autor(id_paisA1,nombrePaisA1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Pais_autor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return lp;
+
+    }
 }

@@ -5,17 +5,27 @@
  */
 package vista;
 
+import control.ControlAutor;
+import control.ControlPais_autor;
+import java.util.LinkedList;
+import javax.swing.JOptionPane;
+import modelo.Pais_autor;
+import modelo.Autor;
+import java.util.Date;
 /**
  *
  * @author usuario
  */
 public class VistaAutor extends javax.swing.JFrame {
 
+    LinkedList<Pais_autor> listapu;
+    
     /**
      * Creates new form VistaAutor
      */
     public VistaAutor() {
         initComponents();
+        listapu = new LinkedList<>();
     }
 
     /**
@@ -27,7 +37,6 @@ public class VistaAutor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fechaNacimientoAutor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -42,6 +51,9 @@ public class VistaAutor extends javax.swing.JFrame {
         btnEliminarAutor = new javax.swing.JButton();
         btnModificarAutor = new javax.swing.JButton();
         btnLimpiarAutor = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel11 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,13 +75,23 @@ public class VistaAutor extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Fecha de Nacimiento");
 
-        btnAgregarAutor.setText("Agregar");
+        btnAgregarAutor.setText("Insertar");
+        btnAgregarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarAutorActionPerformed(evt);
+            }
+        });
 
         btnEliminarAutor.setText("Eliminar");
 
         btnModificarAutor.setText("Modificar");
 
         btnLimpiarAutor.setText("Limpiar");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setText("Pais Autor");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,36 +100,35 @@ public class VistaAutor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(apellidoAutor2)
-                                    .addComponent(apellidoAutor1)
-                                    .addComponent(nombreAutor2)
-                                    .addComponent(nombreAutor1)
-                                    .addComponent(fechaNacimientoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(btnAgregarAutor)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminarAutor)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificarAutor)
                         .addGap(18, 18, 18)
-                        .addComponent(btnLimpiarAutor)))
-                .addContainerGap())
+                        .addComponent(btnLimpiarAutor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel11))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(apellidoAutor2, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                            .addComponent(apellidoAutor1)
+                            .addComponent(nombreAutor2)
+                            .addComponent(nombreAutor1)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,20 +152,70 @@ public class VistaAutor extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(apellidoAutor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(fechaNacimientoAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarAutor)
                     .addComponent(btnEliminarAutor)
                     .addComponent(btnModificarAutor)
                     .addComponent(btnLimpiarAutor))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+        private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+
+        ControlPais_autor objpu = new ControlPais_autor();
+        listapu = objpu.consultarPaisesA();
+        for (int i = 0; i < listapu.size(); i++) {
+
+            Pais_autor objetoPaisA = listapu.get(i);
+            jComboBox2.addItem(objetoPaisA.getNombrePaisA());
+
+        }
+
+    } 
+    
+    private void btnAgregarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAutorActionPerformed
+        ControlAutor objcE=new ControlAutor();
+        
+    String nombre_autor1=nombreAutor1.getText();
+    String nombre_autor2=nombreAutor2.getText();
+    String apellido_autor1=apellidoAutor1.getText();
+    String apellido_autor2=apellidoAutor2.getText();
+    String nombrePais = jComboBox2.getSelectedItem().toString();
+            int idp = 0;
+
+        for (int j = 0; j < listapu.size(); j++) {
+            Pais_autor pais = listapu.get(j);
+            if (nombrePais.equals(pais.getNombrePaisA())) {
+                idp = pais.getId_paisA();
+
+            }
+        }
+    
+    Date fecha_nacimiento_Autor2 = jDateChooser1.getDate();
+    
+    long d=fecha_nacimiento_Autor2.getTime();
+    
+    java.sql.Date fecha_nacimiento_Autor= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time
+    
+    boolean t = objcE.insertar_Autor(nombre_autor1, nombre_autor2, apellido_autor1, apellido_autor2, fecha_nacimiento_Autor);
+
+        if (t == true) {
+            JOptionPane.showMessageDialog(this, "Se inserto el autor");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se inserto el autor");
+        }
+    }//GEN-LAST:event_btnAgregarAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,8 +259,10 @@ public class VistaAutor extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarAutor;
     private javax.swing.JButton btnLimpiarAutor;
     private javax.swing.JButton btnModificarAutor;
-    private javax.swing.JTextField fechaNacimientoAutor;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

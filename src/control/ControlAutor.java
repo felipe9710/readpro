@@ -8,6 +8,9 @@ package control;
 import java.sql.Date;
 import modelo.Autor;
 
+import java.util.LinkedList;
+import modelo.Pais_autor;
+
 /**
  *
  * @author usuario
@@ -26,5 +29,12 @@ public class ControlAutor {
         
         
     }
+    public LinkedList<Pais_autor> consultarPaisesA() {
+        LinkedList<Pais_autor> lpu = new LinkedList<>();
+        String sql = "select * from paises_autores";
+        Pais_autor objpu= new Pais_autor();
+        lpu = objpu.consultarPaisesA(sql);
     
+        return lpu;
+    }
 }

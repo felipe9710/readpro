@@ -6,6 +6,7 @@
 package control;
 
 import modelo.Pais_autor;
+import java.util.LinkedList;
 
 /**
  *
@@ -18,12 +19,19 @@ public class ControlPais_autor {
         boolean t = false;
         Pais_autor objpa = new Pais_autor();
         
-        String sql = "insert into paises_autores(nombrepaisA) value ('"+nombrePais_autor+"')";
+        String sql = "insert into paises_autores(nombrePaisA) value ('"+nombrePais_autor+"')";
         
         t = objpa.insertarPais_autor(sql);
         return t;
         
         
     }
+    public LinkedList<Pais_autor> consultarPaisesA() {
+        LinkedList<Pais_autor> lpu = new LinkedList<>();
+        String sql = "select * from paises_autores";
+        Pais_autor objpu= new Pais_autor();
+        lpu = objpu.consultarPaisesA(sql);
     
+        return lpu;
+    }
 }
