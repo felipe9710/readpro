@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -92,70 +94,27 @@ public class Pais_autor {
         return t;
 
     }
-    
-    public LinkedList<Pais_autor> buscar_pais_autor(String sql) {
+    public LinkedList<Pais_autor> consultarPaisesA(String sql) {
+        LinkedList<Pais_autor> lp = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+        
+        int id_paisA1;
+        String nombrePaisA1 = "";
+
         ResultSet rs = null;
-        LinkedList<Pais_autor> lpa = new LinkedList<>();
-        BaseDatos objCon = new BaseDatos();
-        String idpa;
-        String nombrepa;
-
-        if (objCon.crearConexion()) {
+        if (objb.crearConexion()) {
             try {
-                Statement sentencia = objCon.getConexion().createStatement();
-                rs = sentencia.executeQuery(sql);
+                rs = objb.getSt().executeQuery(sql);
                 while (rs.next()) {
-                    idpa = rs.getString("id_paisA");
-                    nombrepa = rs.getString("nombrePaisA");
-
-                    lpa.add(new Pais_autor(Integer.parseInt(idpa), nombrepa));
+                    id_paisA1 = rs.getInt("id_paisA");
+                    nombrePaisA1 = rs.getString("nombrePaisA");
+                    lp.add(new Pais_autor(id_paisA1,nombrePaisA1));
                 }
             } catch (SQLException ex) {
-                ex.printStackTrace();
-
+                Logger.getLogger(Pais_autor.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return lpa;
-    }
-    
-    public boolean eliminarPaisautor(String sql) {
-
-        boolean t2 = false;
-        BaseDatos objCon = new BaseDatos();
-
-        if (objCon.crearConexion()) {
-
-            try {
-                Statement sentencia = objCon.getConexion().createStatement();
-                sentencia.executeUpdate(sql);
-                t2 = true;
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                t2 = false;
-            }
-        }
-        return t2;
+        return lp;
 
     }
-    
-    public boolean modificarPais_Autor(String sql) {
-
-        boolean t1 = false;
-        BaseDatos objCon = new BaseDatos();
-
-        if (objCon.crearConexion()) {
-
-            try {
-                Statement sentencia = objCon.getConexion().createStatement();
-                sentencia.executeUpdate(sql);
-                t1 = true;
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                t1 = false;
-            }
-        }
-        return t1;
-
-    }
-
 }
