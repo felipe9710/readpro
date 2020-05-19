@@ -36,7 +36,7 @@ public class VistaCategoria extends javax.swing.JFrame {
 
         try {
             
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/readerpro", "root", "root");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/readerpro", "root", "1234");
           
         } catch (Exception e) {
             System.out.println(e);

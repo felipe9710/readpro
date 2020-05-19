@@ -7,31 +7,40 @@ package modelo;
 
 import control.BaseDatos;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author usuario
  */
 public class Autor {
-    
-    String nombre_autor1;
-    String nombre_autor2;
-    String apellido_autor1;
-    String apellido_autor2;
-    Date fecha_nacimiento_Autor;
 
-    public Autor(String nombre_autor1, String nombre_autor2, String apellido_autor1, String apellido_autor2, Date fecha_nacimiento_Autor) {
-        this.nombre_autor1 = nombre_autor1;
-        this.nombre_autor2 = nombre_autor2;
-        this.apellido_autor1 = apellido_autor1;
-        this.apellido_autor2 = apellido_autor2;
-        this.fecha_nacimiento_Autor = fecha_nacimiento_Autor;
-    }
+    private int id_autor;
+    private String nombre_autor1;
 
     public Autor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Autor(String nombre_autor1) {
+        this.nombre_autor1 = nombre_autor1;
+    }
+
+    public Autor(int id_autor, String nombre_autor1) {
+        this.id_autor = id_autor;
+        this.nombre_autor1 = nombre_autor1;
+    }
+
+    public int getId_autor() {
+        return id_autor;
+    }
+
+    public void setId_autor(int id_autor) {
+        this.id_autor = id_autor;
     }
 
     public String getNombre_autor1() {
@@ -42,50 +51,20 @@ public class Autor {
         this.nombre_autor1 = nombre_autor1;
     }
 
-    public String getNombre_autor2() {
-        return nombre_autor2;
-    }
-
-    public void setNombre_autor2(String nombre_autor2) {
-        this.nombre_autor2 = nombre_autor2;
-    }
-
-    public String getApellido_autor1() {
-        return apellido_autor1;
-    }
-
-    public void setApellido_autor1(String apellido_autor1) {
-        this.apellido_autor1 = apellido_autor1;
-    }
-
-    public String getApellido_autor2() {
-        return apellido_autor2;
-    }
-
-    public void setApellido_autor2(String apellido_autor2) {
-        this.apellido_autor2 = apellido_autor2;
-    }
-
-    public Date getFecha_nacimiento_Autor() {
-        return fecha_nacimiento_Autor;
-    }
-
-    public void setFecha_nacimiento_Autor(Date fecha_nacimiento_Autor) {
-        this.fecha_nacimiento_Autor = fecha_nacimiento_Autor;
-    }
-    
-        @Override
+    @Override
     public String toString() {
-        return "Autor{{" + "nombre_autor1=" + nombre_autor1 + ", nombre_autor2=" + nombre_autor2 + ", apellido_autor1=" + apellido_autor1 + ", apellido_autor2=" + apellido_autor2 + ", fecha_nacimiento_Autor=" + fecha_nacimiento_Autor + '}';
+        return "Autor{" + "id_autor=" + id_autor + ", nombre_autor1=" + nombre_autor1 + '}';
     }
-    
-        public boolean insertarAutor(String sql){
-        
+
+
+
+    public boolean insertarAutor(String sql) {
+
         boolean t = false;
         BaseDatos objCon = new BaseDatos();
-        
-        if (objCon.crearConexion()){
-            
+
+        if (objCon.crearConexion()) {
+
             try {
                 Statement sentencia = objCon.getConexion().createStatement();
                 sentencia.executeUpdate(sql);
@@ -97,5 +76,31 @@ public class Autor {
         }
         return t;
     }
-    
+
+    public LinkedList<Autor> consultarAutores(String sql) {
+        
+        LinkedList<Autor> la = new LinkedList<>();
+        BaseDatos objb = new BaseDatos();
+
+        int id_autor1=0;
+        String nombre_autor1 = "";
+        ResultSet rs = null;
+        
+        if (objb.crearConexion()) {
+            try {
+                rs = objb.getSt().executeQuery(sql);
+                while (rs.next()) {
+                    id_autor1 = rs.getInt("id_autor");
+                    nombre_autor1 = rs.getString("nombre_autor1");
+                    la.add(new Autor(id_autor1, nombre_autor1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Autor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return la;
+        
+    }
+
+
 }
