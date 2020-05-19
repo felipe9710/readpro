@@ -279,7 +279,7 @@ public class VistaAutor extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         ControlPais_autor objpu = new ControlPais_autor();
-        listapu = objpu.consultarPaisesA();
+        listapu = objpu.consultarpaisautor();
         for (int i = 0; i < listapu.size(); i++) {
 
             Pais_autor objetoPaisA = listapu.get(i);
@@ -366,16 +366,30 @@ public class VistaAutor extends javax.swing.JFrame {
         //Date fecha_nacimiento = jDateChooser1.getDate();
         String pais = jComboBox2.getSelectedItem().toString();
         
+        
+        
         Date fecha_nacimiento2 = jDateChooser1.getDate();
     
          long f=fecha_nacimiento2.getTime();
     
          java.sql.Date fecha_nacimiento= new java.sql.Date(f);
         
+         
+          int idpais =0;
+
+        for (int i = 0; i < listapu.size(); i++) {
+            Pais_autor paisu = listapu.get(i);
+            if (pais.equals(paisu.getNombrePaisA())) {
+                idpais = paisu.getId_paisA();
+
+            }
+        }
+         
+         
         
         ControlAutor objmu = new ControlAutor();
         
-        boolean t1 = objmu.modificarAutor(select, nombre1, nombre2, apellido, apellido2, fecha_nacimiento, pais);
+        boolean t1 = objmu.modificarAutor(select, nombre1, nombre2, apellido, apellido2, fecha_nacimiento, idpais);
 
         if (t1 == true) {
             JOptionPane.showMessageDialog(this, "Se modifico el usuario con exito");
