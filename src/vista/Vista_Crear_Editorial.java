@@ -263,6 +263,19 @@ public class Vista_Crear_Editorial extends javax.swing.JFrame {
 
     private void jButtoNBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoNBorrarActionPerformed
         // TODO add your handling code here:
+        
+                Control_Editorial objeu = new Control_Editorial();
+        String selected = idE.getText();
+        boolean t1 = objeu.eliminarEditorial(selected);
+
+        if (t1 == true) {
+            JOptionPane.showMessageDialog(this, "Se elimino la editorial con exito");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se elimino la editorial");
+        }
+
+   
+        
     }//GEN-LAST:event_jButtoNBorrarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
