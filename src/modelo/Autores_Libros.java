@@ -103,7 +103,7 @@ public class Autores_Libros {
                 while (rs.next()) {
                     id_autorL = rs.getInt("id_autor");
                     nombre_autor1L = rs.getString("nombre_autor1");
-                    lp.add(new Autor(id_autorL,nombre_autor1L));
+                   // lp.add(new Autor(id_autorL,nombre_autor1L));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Autor.class.getName()).log(Level.SEVERE, null, ex);
