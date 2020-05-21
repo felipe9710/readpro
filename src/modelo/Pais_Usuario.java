@@ -106,7 +106,46 @@ public class Pais_Usuario {
 
     }
     
-    
+     public boolean modificarPais_Usuario(String sql) {
+
+        boolean t1 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t1 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t1 = false;
+            }
+        }
+        return t1;
+
+    }
+
+    public boolean eliminarPais_Usuario(String sql) {
+
+        boolean t2 = false;
+        BaseDatos objCon = new BaseDatos();
+
+        if (objCon.crearConexion()) {
+
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
+                t2 = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t2 = false;
+            }
+        }
+        return t2;
+
+    }
+
     
     
     
