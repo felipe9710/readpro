@@ -88,7 +88,7 @@ public class Categoria {
                 rs = sentencia.executeQuery(sql);
                 while (rs.next()) {
                    
-                    categoria = rs.getNString("categoria");
+                    categoria = rs.getString("categoria");
                    
                  
                     lc.add(new Categoria(categoria));

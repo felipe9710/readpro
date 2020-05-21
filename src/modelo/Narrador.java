@@ -23,11 +23,11 @@ import java.sql.ResultSet;
 public class Narrador {
     
     private int id_narrador;
-    String nombre_narrador1;
-    String nombre_narrado2;
-    String apellido_narrado1;
-    String apellido_narrado2;
-    Date fecha_nacimiento_narrador;
+    private String nombre_narrador1;
+    private String nombre_narrado2;
+    private String apellido_narrado1;
+    private String apellido_narrado2;
+    private Date fecha_nacimiento_narrador;
     private int id_PaisNF;
 
     public Narrador() {
