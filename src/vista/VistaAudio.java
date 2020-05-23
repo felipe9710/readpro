@@ -167,7 +167,7 @@ public class VistaAudio extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
-        LinkedList<Audiolibro> = listaAul;
+        //LinkedList<Audiolibro> = listaAul;
         
     }//GEN-LAST:event_formWindowOpened
 
