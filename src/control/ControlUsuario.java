@@ -5,6 +5,7 @@
  */
 package control;
 
+import java.sql.Date;
 import java.util.LinkedList;
 import modelo.Pais_Usuario;
 import modelo.Usuario;
@@ -36,7 +37,7 @@ public class ControlUsuario {
 
     }
 
-    public boolean modificarUsuario(String select, String nombre1, String nombre2, String apellido, String apellido2, String genero, String nombre_usuario, String correo, String contraseña, String fecha_nac, String fecha_insc, int idpais) {
+    public boolean modificarUsuario(String select, String nombre1, String nombre2, String apellido, String apellido2, String genero, String nombre_usuario, String correo, String contraseña, Date fecha_nac, Date fecha_insc, int idpais) {
 
         boolean t1 = false;
         Usuario objmpa = new Usuario();
