@@ -20,7 +20,7 @@ public class ControlNarrador {
         boolean t = false;
        Narrador objpE = new Narrador();
        String sql="";
-       sql = "INSERT INTO narradores (nombre_narrador1,nombre_narrado2,apellido_narrado1,apellido_narrado2,fecha_nacimiento_Narrador,id_PaisNF) VALUES (?,?,?,?,?,?)";
+       sql = "INSERT INTO narradores (nombre_narrador1,nombre_narrado2,apellido_narrado1,apellido_narrado2,fecha_nacimiento_narrador,id_PaisNF) VALUES (?,?,?,?,?,?)";
         t = objpE.insertarNarrador(objNarrador,sql);//Name of Model
         return t;
         

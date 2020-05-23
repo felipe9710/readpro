@@ -100,7 +100,7 @@ public class Editorial {
         return "Editorial{" + "id_editorial=" + id_editorial + ", nombre_editorial=" + nombre_editorial + ", telefono_E=" + telefono_E + ", direccion_E=" + direccion_E + ", correo_E=" + correo_E + ", Fecha_Creacion_Editorial=" + Fecha_Creacion_Editorial + '}';
     }
 
-   
+
     public boolean insertarEditorial(String sql) {
 
         boolean t = false;
