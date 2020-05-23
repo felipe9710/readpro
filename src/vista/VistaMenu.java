@@ -191,6 +191,8 @@ public class VistaMenu extends javax.swing.JFrame {
         VistaUsuario vu = new VistaUsuario();
         this.dispose();
         vu.setVisible(true);
+        vu.btnregist.setVisible(false);
+        vu.btnregresar.setVisible(false);
         
     }//GEN-LAST:event_BtnusuarioActionPerformed
 
