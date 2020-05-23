@@ -167,11 +167,11 @@ public class Vista_Autores_Libros extends javax.swing.JFrame {
 
         ControlAutor obja = new ControlAutor();
 
-        //listaA = obja.consultarAutores();
+        listaA = obja.consultarAutor();
 
         for (int i = 0; i < listaA.size(); i++) {
             Autor objetoAutor = listaA.get(i);
-            jComboBox1.addItem(objetoAutor.getNombre_autor1());
+            jComboBox1.addItem(objetoAutor.getNombre_autor1()+" "+objetoAutor.getApellido_autor1());
 
         }
 

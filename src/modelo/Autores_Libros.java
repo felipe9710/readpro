@@ -74,13 +74,13 @@ public class Autores_Libros {
         boolean t = false;
         BaseDatos objCon = new BaseDatos();
         Resultset rs = null;
-                        PreparedStatement ps = null;
+        PreparedStatement ps = null;
         if (objCon.crearConexion()) {
 
             try {
                 Statement sentencia = objCon.getConexion().createStatement();
                 sentencia.executeUpdate(sql);
-             
+
                 t = true;
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -89,11 +89,12 @@ public class Autores_Libros {
         }
         return t;
     }
-        public LinkedList<Autor> consultarAutor(String sql) {
+
+    public LinkedList<Autor> consultarAutor(String sql) {
         LinkedList<Autor> lp = new LinkedList<>();
         BaseDatos objb = new BaseDatos();
 
-        int id_autorL=0;
+        int id_autorL = 0;
         String nombre_autor1L = "";
 
         ResultSet rs = null;
@@ -103,7 +104,7 @@ public class Autores_Libros {
                 while (rs.next()) {
                     id_autorL = rs.getInt("id_autor");
                     nombre_autor1L = rs.getString("nombre_autor1");
-                    lp.add(new Autor(id_autorL,nombre_autor1L));
+                    //lp.add(new Autor(id_autorL, nombre_autor1L));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Autor.class.getName()).log(Level.SEVERE, null, ex);
