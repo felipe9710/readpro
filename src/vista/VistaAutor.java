@@ -82,7 +82,7 @@ public class VistaAutor extends javax.swing.JFrame {
         jLabel9.setText("Segundo Nombre");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Insertar Autor");
+        jLabel1.setText("INSERTAR AUTOR");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Primer Apellido");
@@ -126,7 +126,8 @@ public class VistaAutor extends javax.swing.JFrame {
 
         idu.setEditable(false);
 
-        jLabel5.setText("Id: ");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Id:");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,8 +147,10 @@ public class VistaAutor extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Ir al menu");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("principal");
 
         btnmp.setText("jButton1");
@@ -166,7 +169,7 @@ public class VistaAutor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jLabel1)
-                        .addGap(0, 254, Short.MAX_VALUE))
+                        .addGap(0, 211, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)))
@@ -268,7 +271,7 @@ public class VistaAutor extends javax.swing.JFrame {
                         .addComponent(btnmp)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
