@@ -5,17 +5,46 @@
  */
 package vista;
 
+import control.ControlAudiolibro;
+import control.ControlCategoria;
+import control.ControlNarrador;
+import control.Control_Editorial;
+import java.io.File;
+import java.util.LinkedList;
+import modelo.Audiolibro;
+import modelo.Categoria;
+import modelo.Editorial;
+import modelo.Narrador;
+import modelo.Pais_Usuario;
+import modelo.Usuario;
+import java.util.Date;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author usuario
  */
 public class VistaAudiolibro extends javax.swing.JFrame {
 
+    LinkedList<Audiolibro> listAuL;
+    
+    LinkedList<Narrador> listN;
+    LinkedList<Editorial> listaE;
+    LinkedList<Categoria> listaC;
+    
+    
+    
     /**
      * Creates new form VistaAudiolibro
      */
     public VistaAudiolibro() {
         initComponents();
+        
+        listAuL = new LinkedList<>();
+        listN = new LinkedList<>();
+        listaE = new LinkedList<>();
+        listaC = new LinkedList<>();
     }
 
     /**
@@ -32,7 +61,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        numCap = new javax.swing.JTextField();
+        jTextFieldnumCap = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -44,18 +73,35 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jComboBoxNarrador = new javax.swing.JComboBox<>();
         jComboBoxEditorial = new javax.swing.JComboBox<>();
         jComboBoxCategoria = new javax.swing.JComboBox<>();
-        Correo1 = new javax.swing.JTextField();
-        titulo = new javax.swing.JTextField();
-        fechaCreacion = new javax.swing.JTextField();
-        numPag = new javax.swing.JTextField();
-        duracion = new javax.swing.JTextField();
-        idioma = new javax.swing.JTextField();
+        JSinopsis = new javax.swing.JTextField();
+        jTextFieldTitulo = new javax.swing.JTextField();
+        jTextFieldNPaginas = new javax.swing.JTextField();
+        jTextFieldDuracion = new javax.swing.JTextField();
+        jTextFieldIDIOMA = new javax.swing.JTextField();
         btnAgregarAudiolibro = new javax.swing.JButton();
         btnEliminarAudiolibro = new javax.swing.JButton();
         btnModificarAudiolibro = new javax.swing.JButton();
         btnLimpiarAudiolibro = new javax.swing.JButton();
+        jTextFieldPortada = new javax.swing.JTextField();
+        jTextFieldContrportada = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jTextFieldReproducciones = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBoxClasificacion = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        btSeleccionar = new javax.swing.JButton();
+        btSeleccionar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Idioma");
@@ -96,68 +142,154 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel13.setText("Categoría");
 
-        jComboBoxNarrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
-
-        jComboBoxEditorial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
-
-        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elegir" }));
+        jComboBoxEditorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEditorialActionPerformed(evt);
+            }
+        });
 
         btnAgregarAudiolibro.setText("Agregar");
+        btnAgregarAudiolibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarAudiolibroActionPerformed(evt);
+            }
+        });
 
         btnEliminarAudiolibro.setText("Eliminar");
 
         btnModificarAudiolibro.setText("Modificar");
 
-        btnLimpiarAudiolibro.setText("Limpiar");
+        btnLimpiarAudiolibro.setText("Mostrar");
+
+        jTextFieldPortada.setEditable(false);
+
+        jTextFieldContrportada.setEditable(false);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jLabel14.setText("ID: ");
+
+        jTextField1.setEditable(false);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel15.setText("Reproducciones");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel16.setText("Calificacion");
+
+        jComboBoxClasificacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Buena", "Regular", "Mala" }));
+        jComboBoxClasificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxClasificacionActionPerformed(evt);
+            }
+        });
+
+        jDateChooser1.setDateFormatString("yyyy/MM/d");
+
+        btSeleccionar.setText("Seleccionar");
+        btSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSeleccionarActionPerformed(evt);
+            }
+        });
+
+        btSeleccionar2.setText("Seleccionar");
+        btSeleccionar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSeleccionar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6)
-                            .addComponent(Correo1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addGap(109, 109, 109)
+                                    .addComponent(jComboBoxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel15))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldReproducciones)
+                                        .addComponent(jTextFieldIDIOMA, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldDuracion, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldNPaginas, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldnumCap)
+                                        .addComponent(jTextFieldPortada, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(jTextFieldContrportada, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11)
+                                        .addComponent(jLabel12))
+                                    .addGap(115, 115, 115)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jComboBoxNarrador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBoxEditorial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBoxClasificacion, javax.swing.GroupLayout.Alignment.TRAILING, 0, 185, Short.MAX_VALUE))))
+                            .addComponent(jLabel16))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(354, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel13))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(109, 109, 109)
+                                        .addComponent(jLabel6))
+                                    .addComponent(JSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btSeleccionar)
+                                    .addComponent(btSeleccionar2)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(btnAgregarAudiolibro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminarAudiolibro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(idioma, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(duracion, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(numPag, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(fechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(numCap)
-                                    .addComponent(jComboBoxNarrador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxEditorial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(btnAgregarAudiolibro)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarAudiolibro)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificarAudiolibro)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiarAudiolibro)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnModificarAudiolibro)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimpiarAudiolibro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jLabel1)
+                .addContainerGap(508, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,58 +299,234 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
-                    .addComponent(fechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(numPag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldPortada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btSeleccionar)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldContrportada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btSeleccionar2)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(duracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(numCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldnumCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(idioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldIDIOMA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jComboBoxNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jComboBoxEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(Correo1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                    .addComponent(jLabel15)
+                    .addComponent(jTextFieldReproducciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(jComboBoxClasificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jComboBoxNarrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(jComboBoxEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(5, 5, 5)
+                        .addComponent(JSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarAudiolibro)
                     .addComponent(btnEliminarAudiolibro)
                     .addComponent(btnModificarAudiolibro)
                     .addComponent(btnLimpiarAudiolibro))
-                .addGap(20, 20, 20))
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
+        //-------------------NARADORES-------------------
+        
+        ControlNarrador objpu = new ControlNarrador();
+        listN = objpu.consultarNarrador();
+        for (int i = 0; i < listN.size(); i++) {
+
+            Narrador objetoPaisU = listN.get(i);
+            jComboBoxNarrador.addItem(objetoPaisU.getNombre_narrador1());
+
+        }
+        
+        //-------------------EDITORIALES-----------------
+        
+        Control_Editorial objpu2 = new Control_Editorial();
+        listaE = objpu2.consultarEditoriales();
+        for (int j = 0; j < listaE.size(); j++) {
+
+            Editorial objetoPaisU2 = listaE.get(j);
+            jComboBoxEditorial.addItem(objetoPaisU2.getNombre_editorial());
+
+        }
+        //------------------CATEGORIAS-------------------
+        
+        ControlCategoria objpu3 = new ControlCategoria();
+        listaC = objpu3.consultarCategoria();
+        for (int k = 0; k < listaC.size(); k++) {
+
+            Categoria objetoPaisU3 = listaC.get(k);
+            jComboBoxCategoria.addItem(objetoPaisU3.getCategoria());
+
+        }
+        
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnAgregarAudiolibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAudiolibroActionPerformed
+        
+        String titulo = jTextFieldTitulo.getText();
+        //String fecha_creacion = jDateChooser1.getText();
+         Date fecha_creacion2 = jDateChooser1.getDate();
+    
+         long d=fecha_creacion2.getTime();
+    
+         java.sql.Date fecha_creacion= new java.sql.Date(d);//Se hace esto por que date entrega sabado domigo lunes etc, aqui se acomoda el formato con d al ponerle get time
+            
+        String num_paginas = jTextFieldNPaginas.getText();
+            int num = Integer.parseInt (num_paginas);
+        String duracion_total = jTextFieldDuracion.getText();
+            int dur=Integer.parseInt (duracion_total);
+        
+            
+        String portada = jTextFieldPortada.getText();
+        String contraportada = jTextFieldContrportada.getText();
+        
+        
+        
+        String calificacion = jComboBoxClasificacion.getSelectedItem().toString();
+        String sipnosis =JSinopsis.getText();
+        String numCapitulos = jTextFieldnumCap.getText();
+        String idioma = jTextFieldIDIOMA.getText();
+        String reproducciones = jTextFieldReproducciones.getText();
+            int repr=Integer.parseInt (reproducciones);
+        String id_narradorAF = jComboBoxNarrador.getSelectedItem().toString();
+        String id_editorialAF = jComboBoxEditorial.getSelectedItem().toString();
+        String id_categoriaAF = jComboBoxCategoria.getSelectedItem().toString();
+     
+        int idN = 0;
+        int idE = 0;
+        int idC = 0;
+        
+        //----------NARRADOR-----------
+        
+            for (int x = 0; x < listN.size(); x++) {
+            Narrador narradorsito = listN.get(x);
+            if (id_narradorAF.equals(narradorsito.getNombre_narrador1())) {
+                idN = narradorsito.getId_narrador();
+
+            }
+        }
+               
+        
+        //----------Editorial----------
+            for (int j = 0; j < listaE.size(); j++) {
+            Editorial editoriales = listaE.get(j);
+            if (id_editorialAF.equals(editoriales.getNombre_editorial())) {
+                idE = editoriales.getId_editorial();
+
+            }
+        }
+        
+        
+        //---------Categoria-----------
+        
+            for (int j = 0; j < listaC.size(); j++) {
+            Categoria Categoria2 = listaC.get(j);
+            if (id_categoriaAF.equals(Categoria2.getCategoria())) {
+                idE = Categoria2.getId_categoria();
+
+            }
+        }
+            
+            
+        Audiolibro objAL = new Audiolibro(titulo,fecha_creacion,num,dur,portada,contraportada,calificacion,sipnosis,numCapitulos,idioma,repr,idN,idE,idC);
+        
+        ControlAudiolibro objcu = new ControlAudiolibro();
+        boolean t = objcu.insertar_Audiolibro(objAL);
+        if (t == true) {
+            JOptionPane.showMessageDialog(rootPane, "Se inserto el AudioLibro con exito");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No se Inserto el AudioLibro");
+        }    
+                  
+    }//GEN-LAST:event_btnAgregarAudiolibroActionPerformed
+
+    private void jComboBoxClasificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClasificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxClasificacionActionPerformed
+
+    private void btSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeleccionarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        JFileChooser archivo=new JFileChooser();
+        int ventana= archivo.showOpenDialog(null);
+        if(ventana==JFileChooser.APPROVE_OPTION){
+        
+            File file=archivo.getSelectedFile();
+            jTextFieldPortada.setText(String.valueOf(file));
+            
+        }
+    }//GEN-LAST:event_btSeleccionarActionPerformed
+
+    private void btSeleccionar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeleccionar2ActionPerformed
+        // TODO add your handling code here:
+        
+        JFileChooser archivo2=new JFileChooser();
+        int ventana2= archivo2.showOpenDialog(null);
+        if(ventana2==JFileChooser.APPROVE_OPTION){
+        
+            File file2=archivo2.getSelectedFile();
+            jTextFieldContrportada.setText(String.valueOf(file2));
+            
+        }
+        
+        
+    }//GEN-LAST:event_btSeleccionar2ActionPerformed
+
+    private void jComboBoxEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEditorialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEditorialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,22 +564,26 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Correo1;
+    private javax.swing.JTextField JSinopsis;
+    private javax.swing.JButton btSeleccionar;
+    private javax.swing.JButton btSeleccionar2;
     private javax.swing.JButton btnAgregarAudiolibro;
     private javax.swing.JButton btnEliminarAudiolibro;
     private javax.swing.JButton btnLimpiarAudiolibro;
     private javax.swing.JButton btnModificarAudiolibro;
-    private javax.swing.JTextField duracion;
-    private javax.swing.JTextField fechaCreacion;
-    private javax.swing.JTextField idioma;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
+    private javax.swing.JComboBox<String> jComboBoxClasificacion;
     private javax.swing.JComboBox<String> jComboBoxEditorial;
     private javax.swing.JComboBox<String> jComboBoxNarrador;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -280,8 +592,16 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField numCap;
-    private javax.swing.JTextField numPag;
-    private javax.swing.JTextField titulo;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldContrportada;
+    private javax.swing.JTextField jTextFieldDuracion;
+    private javax.swing.JTextField jTextFieldIDIOMA;
+    private javax.swing.JTextField jTextFieldNPaginas;
+    private javax.swing.JTextField jTextFieldPortada;
+    private javax.swing.JTextField jTextFieldReproducciones;
+    private javax.swing.JTextField jTextFieldTitulo;
+    private javax.swing.JTextField jTextFieldnumCap;
     // End of variables declaration//GEN-END:variables
 }

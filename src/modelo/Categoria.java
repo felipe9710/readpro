@@ -16,6 +16,11 @@ import java.util.LinkedList;
  * @author usuario
  */
 public class Categoria {
+
+    public Categoria(int id_categoria, String categoria) {
+        this.id_categoria = id_categoria;
+        this.categoria = categoria;
+    }
     
     private int id_categoria;
     private String categoria;
@@ -27,19 +32,6 @@ public class Categoria {
         this.categoria = categoria;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public Categoria(int id_categoria, String categoria) {
-        this.id_categoria = id_categoria;
-        this.categoria = categoria;
-    }
-
     public int getId_categoria() {
         return id_categoria;
     }
@@ -48,12 +40,20 @@ public class Categoria {
         this.id_categoria = id_categoria;
     }
 
-    
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     @Override
     public String toString() {
-        return "Categoria{" + "categoria=" + categoria + '}';
+        return "Categoria{" + "id_categoria=" + id_categoria + ", categoria=" + categoria + '}';
     }
-    
+
+   
         public boolean insertarCategoria(String sql){
         
         boolean t = false;
