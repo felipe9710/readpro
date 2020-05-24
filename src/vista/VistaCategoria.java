@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
@@ -22,8 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VistaCategoria extends javax.swing.JFrame {
 
-     PreparedStatement ps;
-     ResultSet rs;
+
      
      LinkedList<Categoria> listaCategorias;
      
@@ -32,18 +32,7 @@ public class VistaCategoria extends javax.swing.JFrame {
        
         listaCategorias = new LinkedList<>();
     }
- public static Connection getConection() {
-        Connection con = null;
 
-        try {
-            
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/readerpro", "root", "root");
-          
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return con;
-    }
  
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,8 +51,6 @@ public class VistaCategoria extends javax.swing.JFrame {
         jButtonMostrar = new javax.swing.JButton();
         jButtonBorrar = new javax.swing.JButton();
         jButtonActualizar = new javax.swing.JButton();
-        jButtonBuscar = new javax.swing.JButton();
-        jTextFieldBuscar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         idcg = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -115,19 +102,16 @@ public class VistaCategoria extends javax.swing.JFrame {
             }
         });
 
-        jButtonBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButtonBuscar.setText("Buscar");
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("ID");
 
         idcg.setEditable(false);
         idcg.setName("idcg"); // NOI18N
+        idcg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idcgActionPerformed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,6 +124,11 @@ public class VistaCategoria extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         jScrollPane1.setViewportView(jScrollPane2);
@@ -169,19 +158,14 @@ public class VistaCategoria extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(idcg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel4)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(idcg, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(77, 77, 77))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jButtoiNSERTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -218,11 +202,7 @@ public class VistaCategoria extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(idcg, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonBuscar))
-                .addGap(52, 52, 52)
+                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,11 +224,13 @@ public class VistaCategoria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtoiNSERTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoiNSERTARActionPerformed
-        String nombrePaisU = jTextField1.getText();
+        String nombreCategoria = jTextField1.getText();
+        
+             
+        Categoria objC = new Categoria(nombreCategoria);
+        ControlCategoria objcu = new ControlCategoria();
 
-        ControlCategoria objcpa = new ControlCategoria();
-
-        boolean t = objcpa.insertarCategoria(nombrePaisU);
+        boolean t = objcu.insertarCategoria(objC);
 
         if (t == true) {
             JOptionPane.showMessageDialog(this, "Se inserto la categoria del audiolibro");
@@ -258,37 +240,40 @@ public class VistaCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtoiNSERTARActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
-        ControlCategoria objpn = new ControlCategoria();
-        int ncol;
-        Object[] fila;
+        ControlCategoria obju = new ControlCategoria();
+        int ncolu;
+        Object[] fila2;
 
-        listaCategorias = objpn.consultarCategoria();
-
+        listaCategorias = obju.consultarCategoria();
         DefaultTableModel modelo = new DefaultTableModel();
         this.jTable2.setModel(modelo);
+        modelo.addColumn("id_categoria");
+        modelo.addColumn("categoria");
+        
+        ncolu = modelo.getColumnCount();
 
-        modelo.addColumn("id Categoria");
-        modelo.addColumn("Categoria");
-        ncol = modelo.getColumnCount();
-
-        //Object[] fila = new Object[ncol];
         for (int i = 0; i < listaCategorias.size(); i++) {
-            fila = new Object[ncol];
-            fila[0] = listaCategorias.get(i).getId_categoria();
-            fila[1] = listaCategorias.get(i).getCategoria();
-            modelo.addRow(fila);
+
+            fila2 = new Object[ncolu];
+            fila2[0] = listaCategorias.get(i).getId_categoria();
+            fila2[1] = listaCategorias.get(i).getCategoria();
+            
+            modelo.addRow(fila2);
+        }
     }//GEN-LAST:event_jButtonMostrarActionPerformed
-    }
+    
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
-                ControlCategoria objepn = new ControlCategoria();
-        String select = idcg.getText();
-        boolean t1 = objepn.eliminarCategoria(select);
+        
+        ControlCategoria objeu = new ControlCategoria();
+        String selected = idcg.getText();
+        boolean t1 = objeu.eliminarCategoria(selected);
 
         if (t1 == true) {
-            JOptionPane.showMessageDialog(this, "Se elimino la categoria");
+            JOptionPane.showMessageDialog(this, "Se elimino la Categoria");
         } else {
-            JOptionPane.showMessageDialog(this, "No se elimino la categoria");
-        }
+            JOptionPane.showMessageDialog(this, "No se la Categoria");
+        }        
+        
 
     }//GEN-LAST:event_jButtonBorrarActionPerformed
 
@@ -305,34 +290,6 @@ public class VistaCategoria extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
-    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-
-        // String sql = "SELECT * FROM categorias WHERE categoria = ('"+mostrarCategoria+"')";
-
-        Connection con = null;
-
-        try{
-
-            con = getConection();
-
-            ps = con.prepareStatement("SELECT * FROM categorias WHERE categoria = ?");
-            ps.setString(1,jTextFieldBuscar.getText());
-
-            rs = ps.executeQuery();
-
-            if(rs.next()){
-
-                jTextField1.setText(rs.getString("categoria"));
-
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe una catehoria con la clave");
-            }
-
-        } catch(Exception e){
-            System.err.println(e);
-        }
-    }//GEN-LAST:event_jButtonBuscarActionPerformed
-
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
         
         VistaMenu vmp = new VistaMenu();
@@ -340,6 +297,19 @@ public class VistaCategoria extends javax.swing.JFrame {
         vmp.setVisible(true);
         
     }//GEN-LAST:event_btnmpActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+        int selected = jTable2.rowAtPoint(evt.getPoint());
+        idcg.setText(String.valueOf(jTable2.getValueAt(selected, 0)));
+        jTextField1.setText(String.valueOf(jTable2.getValueAt(selected, 1)));
+       
+                       
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void idcgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idcgActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idcgActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,7 +355,6 @@ public class VistaCategoria extends javax.swing.JFrame {
     private javax.swing.JButton jButtoiNSERTAR;
     private javax.swing.JButton jButtonActualizar;
     private javax.swing.JButton jButtonBorrar;
-    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -397,7 +366,6 @@ public class VistaCategoria extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextFieldBuscar;
     // End of variables declaration//GEN-END:variables
 
 

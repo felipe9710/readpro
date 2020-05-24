@@ -14,22 +14,22 @@ import modelo.Categoria;
  */
 public class ControlCategoria {
     
-        public boolean insertarCategoria(String categoria) {
+        public boolean insertarCategoria(Categoria objC) {
         
         boolean t = false;
         Categoria objpc = new Categoria();
         
-        String sql = "insert into categorias(categoria) value ('"+categoria+"')";
+        String sql = "insert into categorias(categoria) value (?)";
         
-        t = objpc.insertarCategoria(sql);
+        t = objpc.insertarCategoria(objC,sql);
         return t;
      
     }
         
     public LinkedList<Categoria> consultarCategoria() {
-        String sql="Select * from Categorias;";
+        String sql="Select * from categorias;";
         Categoria objc=new Categoria();
-        LinkedList<Categoria> listc=objc.buscarCategoria(sql);
+        LinkedList<Categoria> listc=objc.consultarCategoria(sql);
         
         return listc;
     }
@@ -42,11 +42,11 @@ public class ControlCategoria {
         return t1;
     }
         
-        public boolean eliminarCategoria(String select) {
+        public boolean eliminarCategoria(String selected) {
 
         boolean t2 = false;
         Categoria objepa = new Categoria();
-        String sql = "delete from paises_narradores where id_PaisN =" + select;
+        String sql = "delete from categorias where id_categoria =" + selected;
         t2 = objepa.eliminarCategoria(sql);
         return t2;
 
