@@ -110,6 +110,7 @@ public class VistaUmenu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("BIBLIOTECA", jPanel2);
 
+        btncs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btncs.setText("CERRAR SESION");
         btncs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
