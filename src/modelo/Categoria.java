@@ -6,30 +6,26 @@
 package modelo;
 
 import control.BaseDatos;
-import java.io.FileInputStream;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author usuario
  */
 public class Categoria {
+
+    public Categoria(int id_categoria, String categoria) {
+        this.id_categoria = id_categoria;
+        this.categoria = categoria;
+    }
     
     private int id_categoria;
     private String categoria;
 
     public Categoria() {
-    }
-
-    public Categoria(int id_categoria, String categoria) {
-        this.id_categoria = id_categoria;
-        this.categoria = categoria;
     }
 
     public Categoria(String categoria) {
@@ -57,61 +53,54 @@ public class Categoria {
         return "Categoria{" + "id_categoria=" + id_categoria + ", categoria=" + categoria + '}';
     }
 
-  public boolean insertarCategoria(Categoria objC,String sql){
+   
+        public boolean insertarCategoria(String sql){
         
-  
         boolean t = false;
-        BaseDatos objb = new BaseDatos();
-        FileInputStream fis = null;
-        PreparedStatement ps = null;
-        try {
-            if (objb.crearConexion()) {
-                objb.getConexion().setAutoCommit(false);
-                ps = objb.getConexion().prepareStatement(sql);
-             
-                ps.setString(1, objC.getCategoria());
-               
-                ps.executeUpdate();
-                objb.getConexion().commit();
+        BaseDatos objCon = new BaseDatos();
+        
+        if (objCon.crearConexion()){
+            
+            try {
+                Statement sentencia = objCon.getConexion().createStatement();
+                sentencia.executeUpdate(sql);
                 t = true;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                t = false;
             }
-        } catch (Exception ex) {
-            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
-            t = false;
         }
-
         return t;
-
     }
         
         
-    public LinkedList<Categoria> consultarCategoria(String sql) {
-
+            public LinkedList<Categoria> buscarCategoria(String sql) {
         ResultSet rs = null;
-        LinkedList<Categoria> lu = new LinkedList<>();
-        BaseDatos objCon = new BaseDatos();
-        String idu;
-        String Categoria = "";
-       
-        if (objCon.crearConexion()) {
+        LinkedList<Categoria> lc = new LinkedList<>();
+        BaseDatos objcone = new BaseDatos();
+        String categoria;
+
+
+        
+        if (objcone.crearConexion()) {
             try {
-                Statement sentencia = objCon.getConexion().createStatement();
+                Statement sentencia = objcone.getConexion().createStatement();
                 rs = sentencia.executeQuery(sql);
                 while (rs.next()) {
-                    idu = rs.getString("id_categoria");
-                    Categoria = rs.getString("categoria");
                    
-
-                    lu.add(new Categoria(Integer.parseInt(idu), Categoria));
+                    categoria = rs.getString("categoria");
+                   
+                 
+                    lc.add(new Categoria(categoria));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
 
             }
         }
-        return lu;
-
+        return lc;
     }
+    
         public boolean modificarCategoria(String sql) {
 
         boolean t1 = false;
