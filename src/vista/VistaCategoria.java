@@ -248,9 +248,10 @@ public class VistaCategoria extends javax.swing.JFrame {
     private void jButtoiNSERTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoiNSERTARActionPerformed
         String nombreCategoria = jTextField1.getText();
 
-        ControlCategoria objcpa = new ControlCategoria();
+        Categoria objC = new Categoria(nombreCategoria);
+        ControlCategoria objcc = new ControlCategoria();
 
-        boolean t = objcpa.insertarCategoria();
+        boolean t = objcc.insertarCategoria(objC);
 
         if (t == true) {
             JOptionPane.showMessageDialog(this, "Se inserto la categoria del audiolibro");
