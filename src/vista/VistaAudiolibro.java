@@ -97,11 +97,14 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         btSeleccionar2 = new javax.swing.JButton();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         btnmp = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+=======
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
@@ -224,6 +227,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -248,6 +252,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
         jLabel18.setText("principal");
 
+=======
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
@@ -330,6 +336,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,6 +350,11 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(btnmp)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+=======
+                .addGap(95, 95, 95)
+                .addComponent(jLabel1)
+                .addContainerGap(508, Short.MAX_VALUE))
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
                 .addGap(95, 95, 95)
                 .addComponent(jLabel1)
@@ -422,6 +434,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jTextFieldnumCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -447,6 +460,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 =======
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
+=======
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
                         .addComponent(jLabel6)
                         .addGap(5, 5, 5)
                         .addComponent(JSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -460,6 +475,9 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
+=======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
@@ -624,6 +642,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void btnEliminarAudiolibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAudiolibroActionPerformed
         // TODO add your handling code here:
         
@@ -706,6 +725,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnmpActionPerformed
 
+=======
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======

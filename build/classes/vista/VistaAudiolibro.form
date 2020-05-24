@@ -119,6 +119,7 @@
           </Group>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane3" min="-2" pref="704" max="-2" attributes="0"/>
@@ -140,11 +141,16 @@
 =======
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
+=======
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="508" max="32767" attributes="0"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
+=======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
@@ -232,6 +238,7 @@
                           <Component id="jComboBoxCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -265,6 +272,15 @@
                   </Group>
               </Group>
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
+=======
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="JSinopsis" min="-2" pref="86" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAgregarAudiolibro" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -276,6 +292,9 @@
               <Component id="jScrollPane2" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
+=======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
@@ -552,6 +571,7 @@
     </Component>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -588,6 +608,8 @@
         <Property name="text" type="java.lang.String" value="principal"/>
       </Properties>
     </Component>
+=======
+>>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
 >>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
 =======
