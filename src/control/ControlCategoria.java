@@ -14,16 +14,12 @@ import modelo.Categoria;
  */
 public class ControlCategoria {
     
-        public boolean insertarCategoria(String categoria) {
+        public boolean insertarCategoria(Categoria objC) {
         
         boolean t = false;
         Categoria objpc = new Categoria();
         
-<<<<<<< HEAD
         String sql = "insert into categorias(categoria) value ('"+objC.getCategoria()+"')";
-=======
-        String sql = "insert into categorias(categoria) value ('"+categoria+"')";
->>>>>>> parent of b930b45... Merge branch 'master' of https://github.com/felipe9710/readpro
         
         t = objpc.insertarCategoria(sql);
         return t;
