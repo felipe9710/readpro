@@ -96,9 +96,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         btSeleccionar2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        btnmp = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -231,17 +228,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable2);
 
-        btnmp.setText("jButton1");
-        btnmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmpActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setText("Ir al menu");
-
-        jLabel18.setText("principal");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -330,17 +316,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel17))
-                        .addGap(62, 62, 62))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(btnmp)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,17 +399,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                             .addComponent(btnModificarAudiolibro)
                             .addComponent(btnLimpiarAudiolibro)))
                     .addComponent(JSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnmp)))
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(256, Short.MAX_VALUE))
         );
 
@@ -668,14 +635,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JSinopsisActionPerformed
 
-    private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
-        
-        VistaMenu vmp = new VistaMenu();
-        this.dispose();
-        vmp.setVisible(true);
-        
-    }//GEN-LAST:event_btnmpActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -719,7 +678,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarAudiolibro;
     private javax.swing.JButton btnLimpiarAudiolibro;
     private javax.swing.JButton btnModificarAudiolibro;
-    private javax.swing.JButton btnmp;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JComboBox<String> jComboBoxClasificacion;
     private javax.swing.JComboBox<String> jComboBoxEditorial;
@@ -733,8 +691,6 @@ public class VistaAudiolibro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
