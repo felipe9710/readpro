@@ -136,6 +136,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane3" min="-2" pref="704" max="-2" attributes="0"/>
+<<<<<<< HEAD
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -151,6 +152,9 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
+=======
+              <EmptySpace max="32767" attributes="0"/>
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
           </Group>
       </Group>
     </DimensionLayout>
@@ -239,8 +243,44 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   </Group>
               </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldnumCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAgregarAudiolibro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnEliminarAudiolibro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnModificarAudiolibro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLimpiarAudiolibro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+=======
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
+                  </Group>
+                  <Component id="JSinopsis" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+              </Group>
+<<<<<<< HEAD
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="117" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnmp" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+=======
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -258,20 +298,9 @@
                   </Group>
                   <Component id="JSinopsis" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="117" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnmp" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Component id="jScrollPane3" min="-2" pref="117" max="-2" attributes="0"/>
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
               <EmptySpace pref="256" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -553,6 +582,7 @@
         </Component>
       </SubComponents>
     </Container>
+<<<<<<< HEAD
     <Component class="javax.swing.JButton" name="btnmp">
       <Properties>
         <Property name="text" type="java.lang.String" value="jButton1"/>
@@ -571,5 +601,7 @@
         <Property name="text" type="java.lang.String" value="principal"/>
       </Properties>
     </Component>
+=======
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
   </SubComponents>
 </Form>

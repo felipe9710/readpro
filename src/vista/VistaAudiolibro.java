@@ -96,9 +96,12 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         btSeleccionar2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+<<<<<<< HEAD
         btnmp = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+=======
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -231,6 +234,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable2);
 
+<<<<<<< HEAD
         btnmp.setText("jButton1");
         btnmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +246,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
 
         jLabel18.setText("principal");
 
+=======
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -330,6 +336,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 704, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -341,6 +348,9 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(btnmp)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+=======
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,6 +433,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                             .addComponent(btnModificarAudiolibro)
                             .addComponent(btnLimpiarAudiolibro)))
                     .addComponent(JSinopsis, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -434,6 +445,10 @@ public class VistaAudiolibro extends javax.swing.JFrame {
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnmp)))
+=======
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
                 .addContainerGap(256, Short.MAX_VALUE))
         );
 
@@ -668,6 +683,7 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JSinopsisActionPerformed
 
+<<<<<<< HEAD
     private void btnmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmpActionPerformed
         
         VistaMenu vmp = new VistaMenu();
@@ -676,6 +692,8 @@ public class VistaAudiolibro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnmpActionPerformed
 
+=======
+>>>>>>> parent of 111ea9b... Revert "Merge branch 'master' of https://github.com/felipe9710/readpro"
     /**
      * @param args the command line arguments
      */
